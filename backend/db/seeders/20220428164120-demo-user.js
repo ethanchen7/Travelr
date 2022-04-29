@@ -8,18 +8,33 @@ module.exports = {
       [
         {
           email: "demo@user.io",
-          username: "Demo-lition",
+          username: "demo-lition",
           hashedPassword: bcrypt.hashSync("password"),
         },
         {
-          email: "user1@user.io",
-          username: "FakeUser1",
-          hashedPassword: bcrypt.hashSync("password2"),
+          email: "ethan@ethan.com",
+          username: "ethanchen",
+          hashedPassword: bcrypt.hashSync("password"),
         },
         {
-          email: "user2@user.io",
-          username: "FakeUser2",
-          hashedPassword: bcrypt.hashSync("password3"),
+          email: "bigtravelboy@gmail.com",
+          username: "bigtravelboy",
+          hashedPassword: bcrypt.hashSync("password"),
+        },
+        {
+          email: "travellover@gmail.com",
+          username: "travellover",
+          hashedPassword: bcrypt.hashSync("password"),
+        },
+        {
+          email: "johnsmith@gmail.com",
+          username: "johnsmith",
+          hashedPassword: bcrypt.hashSync("password"),
+        },
+        {
+          email: "jeonjungkook@gmail.com",
+          username: "jeonjungkook",
+          hashedPassword: bcrypt.hashSync("password"),
         },
       ],
       {}
@@ -31,7 +46,16 @@ module.exports = {
     return queryInterface.bulkDelete(
       "Users",
       {
-        username: { [Op.in]: ["Demo-lition", "FakeUser1", "FakeUser2"] },
+        username: {
+          [Op.in]: [
+            "demo-lition",
+            "ethanchen",
+            "bigtravelboy",
+            "travellover",
+            "johnsmith",
+            "jeonjungkook",
+          ],
+        },
       },
       {}
     );
