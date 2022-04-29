@@ -1,0 +1,30 @@
+.navigation-bar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.nav-left {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-logo {
+  width: 180px;
+  height: 90px;
+  margin-left: 30px;
+}
+
+.nav-right {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+}

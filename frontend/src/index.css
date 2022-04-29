@@ -1,1 +1,22 @@
-/* TODO Add site wide styles */
+body {
+  margin: 0;
+  text-decoration: none;
+}
+
+* {
+  font-family: "Proxima Nova Regular";
+}
+
+a {
+  text-decoration: none;
+}
+
+button:hover,
+a:hover {
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: "Proxima Nova Regular";
+  src: url("/public/fonts/ProximaNovaFont.otf");
+}
