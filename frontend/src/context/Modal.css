@@ -21,4 +21,8 @@
 #modal-content {
   position: absolute;
   background-color: white;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 5px;
+  -webkit-box-pack: center;
 }
