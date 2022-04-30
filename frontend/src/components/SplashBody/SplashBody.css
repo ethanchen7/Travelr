@@ -5,10 +5,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
+  background-color: rgb(26, 26, 26, 1);
+  z-index: 100;
+}
+.splash-body-text-container {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.splash-body-container > h1 {
+.splash-body-text-container > h1 {
   z-index: 10;
   color: white;
   font-size: 50px;
@@ -16,7 +24,7 @@
   letter-spacing: 0.02em;
 }
 
-.splash-body-container > p {
+.splash-body-text-container > p {
   z-index: 10;
   color: white;
   font-size: 28px;
@@ -33,9 +41,7 @@
   top: 0px;
   left: 0px;
   right: 0px;
-  /* bottom: 0px; */
   z-index: 0;
-  /* overflow: hidden; */
 }
 
 .slideshow li {
@@ -54,22 +60,22 @@
   background-repeat: none;
   opacity: 0;
   z-index: -1;
-  animation: imageAnimation 12s linear infinite 0s;
+  animation: imageAnimation 10s linear infinite 0s;
 }
 
 .slideshow li:nth-child(1) span {
-  background-image: url(../../../public/images/background-1.jpeg);
+  background-image: url(../../../public/images/background-2.jpeg);
   animation-delay: 0s;
 }
 .slideshow li:nth-child(2) span {
   background-image: url(../../../public/images/background-3.jpeg);
+  animation-delay: 3s;
+}
+.slideshow li:nth-child(3) span {
+  background-image: url(../../../public/images/background-1.jpeg);
   animation-delay: 6s;
 }
-/* .slideshow li:nth-child(3) span {
-  background-image: url(../images/3.jpg);
-  animation-delay: 12s;
-}
-.slideshow li:nth-child(4) span {
+/* .slideshow li:nth-child(4) span {
   background-image: url(../images/4.jpg);
   animation-delay: 18s;
 }
@@ -80,12 +86,12 @@
 .slideshow li:nth-child(6) span {
   background-image: url(../images/6.jpg);
   animation-delay: 30s;
-} */
+}  */
 
 /* .slideshow li:nth-child(2) div {
   animation-delay: 6s;
-} */
-/* .slideshow li:nth-child(3) div {
+}
+.slideshow li:nth-child(3) div {
   animation-delay: 12s;
 }
 .slideshow li:nth-child(4) div {
@@ -96,19 +102,19 @@
 }
 .slideshow li:nth-child(6) div {
   animation-delay: 30s;
-} */
+}  */
 
 @keyframes imageAnimation {
   0% {
     opacity: 0;
     animation-timing-function: ease-in;
   }
-  25% {
-    opacity: 1;
+  15% {
+    opacity: 0.5;
     animation-timing-function: ease-out;
   }
   50% {
-    opacity: 1;
+    opacity: 0.5;
   }
   75% {
     opacity: 0;

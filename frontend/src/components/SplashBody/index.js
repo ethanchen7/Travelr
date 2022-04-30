@@ -3,10 +3,13 @@ const SplashBody = () => {
   return (
     <>
       <div className="splash-body-container">
-        <h1>Find your inspiration.</h1>
-        <p>
-          Join the Travelr community, home to travel enthusiasts and explorists.
-        </p>
+        <div className="splash-body-text-container">
+          <h1>Find your inspiration.</h1>
+          <p>
+            Join the Travelr community, home to travel enthusiasts and
+            explorists.
+          </p>
+        </div>
       </div>
       <ul className="slideshow">
         <li>
