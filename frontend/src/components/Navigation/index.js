@@ -4,13 +4,37 @@ import { useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignUpFormModal";
 import "./Navigation.css";
+import LogoutButton from "./LogoutButton";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
 
+  let navLeftLinks;
   let sessionLinks;
   if (sessionUser) {
-    sessionLinks = "";
+    navLeftLinks = (
+      <>
+        <NavLink exact to="/">
+          Explore
+        </NavLink>
+        <NavLink to={`/users/${sessionUser.id}`}>You</NavLink>
+        <NavLink to={`/favorites`}>Favorites</NavLink>
+      </>
+    );
+    sessionLinks = (
+      <>
+        {/* search bar component */}
+        <NavLink exact to="/">
+          Search
+        </NavLink>
+        <NavLink exact to="/">
+          <button className="upload-btn">
+            <i class="fa-solid fa-cloud-arrow-up fa-2xl"></i>
+          </button>
+        </NavLink>
+        <LogoutButton />
+      </>
+    );
   } else {
     sessionLinks = (
       <>
@@ -30,6 +54,7 @@ function Navigation({ isLoaded }) {
             alt="logo"
           ></img>
         </NavLink>
+        {isLoaded && navLeftLinks}
       </div>
       <div className="nav-right">{isLoaded && sessionLinks}</div>
     </nav>

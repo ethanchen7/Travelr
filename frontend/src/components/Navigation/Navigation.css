@@ -16,6 +16,12 @@
   width: 40%;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.nav-left > a {
+  color: white;
+  margin-left: 15px;
 }
 
 .nav-logo {
@@ -33,4 +39,12 @@
 }
 .nav-right > button {
   margin-left: 10px;
+}
+
+.upload-btn {
+  color: white;
+  background-color: rgb(27, 27, 27);
+  border: none;
+  width: 60px;
+  height: 60px;
 }
