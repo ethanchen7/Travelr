@@ -60,7 +60,7 @@
   background-repeat: none;
   opacity: 0;
   z-index: -1;
-  animation: imageAnimation 10s linear infinite 0s;
+  animation: imageAnimation 12s linear infinite 0s;
 }
 
 .slideshow li:nth-child(1) span {
@@ -69,24 +69,16 @@
 }
 .slideshow li:nth-child(2) span {
   background-image: url(../../../public/images/background-3.jpeg);
-  animation-delay: 3s;
+  animation-delay: 8s;
 }
 .slideshow li:nth-child(3) span {
   background-image: url(../../../public/images/background-1.jpeg);
-  animation-delay: 6s;
+  animation-delay: 19s;
 }
-/* .slideshow li:nth-child(4) span {
-  background-image: url(../images/4.jpg);
-  animation-delay: 18s;
+.slideshow li:nth-child(4) span {
+  background-image: url(../../../public/images/background-4.jpeg);
+  animation-delay: 32s;
 }
-.slideshow li:nth-child(5) span {
-  background-image: url(../images/5.jpg);
-  animation-delay: 24s;
-}
-.slideshow li:nth-child(6) span {
-  background-image: url(../images/6.jpg);
-  animation-delay: 30s;
-}  */
 
 /* .slideshow li:nth-child(2) div {
   animation-delay: 6s;
@@ -109,12 +101,12 @@
     opacity: 0;
     animation-timing-function: ease-in;
   }
-  15% {
-    opacity: 0.5;
+  25% {
+    opacity: 0.4;
     animation-timing-function: ease-out;
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.7;
   }
   75% {
     opacity: 0;

@@ -21,6 +21,9 @@ const SplashBody = () => {
         <li>
           <span>Image 03</span>
         </li>
+        <li>
+          <span>Image 04</span>
+        </li>
       </ul>
     </>
   );
