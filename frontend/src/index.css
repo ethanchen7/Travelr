@@ -11,6 +11,22 @@ a {
   text-decoration: none;
 }
 
+li {
+  list-style: none;
+}
+
+.errors-container {
+  display: flex;
+  justify-content: center;
+  padding: 0 30px;
+  width: 80%;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
 button:hover,
 a:hover {
   cursor: pointer;

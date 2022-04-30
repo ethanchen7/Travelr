@@ -20,7 +20,7 @@
 
 .form-header-text {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 5px;
   font-size: 18px;
 }
 
@@ -39,8 +39,9 @@
   margin-bottom: 10px;
 }
 
-.credential-input {
-  width: 80%;
+.form-input {
+  width: 76%;
+  padding: 10px;
 }
 
 .password-input {
@@ -63,6 +64,13 @@
   margin-top: 20px;
   width: 82%;
   border: 0.15px solid rgb(206, 206, 206);
+}
+
+.signupBtn {
+  margin-top: 15px;
+  height: 2.5rem;
+  width: 82%;
+  margin-bottom: 20px;
 }
 
 /* .sign-up-link {

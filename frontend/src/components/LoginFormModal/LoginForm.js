@@ -46,20 +46,22 @@ const LoginForm = () => {
         </ul>
         <div className="input-container">
           <input
-            className="credential-input"
+            className="form-input"
             name="credential"
             type="text"
             value={credential}
+            required
             placeholder="Email Address or Username"
             onChange={(e) => setCredential(e.target.value)}
           ></input>
         </div>
         <div className="input-container">
           <input
-            className="password-input"
+            className="form-input"
             name="password"
             type="password"
             value={password}
+            required
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           ></input>
