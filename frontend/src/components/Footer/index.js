@@ -11,6 +11,7 @@ const Footer = () => {
     "HTML",
     "CSS",
   ];
+
   return (
     <div className="splash-footer">
       {splashFooterTech.map((tech) => {

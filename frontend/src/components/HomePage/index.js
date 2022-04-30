@@ -7,11 +7,11 @@ const HomePage = () => {
     return (
       <>
         <SplashBody />
-        <Footer session={session} />
+        <Footer />
       </>
     );
   } else {
-    return <div></div>;
+    return <>{/* explore page */}</>;
   }
 };
 
