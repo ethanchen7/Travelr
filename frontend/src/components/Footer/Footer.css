@@ -13,12 +13,12 @@
   /* overflow: hidden; */
 }
 
-.splash-footer > img {
+.socials-btn {
   width: 24px;
   height: 24px;
   color: gray;
 }
 
-.splash-footer > img:hover {
+.socials-btn:hover {
   cursor: pointer;
 }

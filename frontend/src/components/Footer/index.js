@@ -16,8 +16,21 @@ const Footer = () => {
       {splashFooterTech.map((tech) => {
         return <div>{tech}</div>;
       })}
-      <img src="/images/linkedinedited.png" alt="linkedin" />
-      <img src="/images/githubedited.png" alt="github" />
+
+      <a href="https://www.linkedin.com/in/ethan-chen-3b7070127/">
+        <img
+          className="socials-btn"
+          src="/images/linkedinedited.png"
+          alt="linkedin"
+        />
+      </a>
+      <a href="https://github.com/ethanchen7">
+        <img
+          className="socials-btn"
+          src="/images/githubedited.png"
+          alt="github"
+        />
+      </a>
     </div>
   );
 };
