@@ -3,7 +3,7 @@ import ImageCard from "../ImageCard";
 import "./ExplorePage.css";
 
 const ExplorePage = () => {
-  //   const images = useSelector((state) => state.images.images);
+  // const images = useSelector((state) => state.images.images);
   return (
     <div className="body-container">
       <div className="inner-container">
