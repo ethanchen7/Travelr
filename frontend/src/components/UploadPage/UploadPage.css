@@ -1,0 +1,13 @@
+.upload-container {
+  position: absolute;
+  top: 75px;
+  display: flex;
+  justify-content: center;
+}
+
+.upload-container > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

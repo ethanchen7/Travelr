@@ -1,0 +1,21 @@
+.body-container {
+  position: absolute;
+  top: 75px;
+  margin: 100px;
+  padding: 0;
+  text-align: center;
+}
+
+.inner-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 100px 300px;
+  grid-gap: 10px;
+  grid-auto-flow: dense;
+}
+
+@media screen and (max-width: 500px) {
+  .inner-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
