@@ -27,9 +27,9 @@ function Navigation({ isLoaded }) {
         <NavLink exact to="/">
           Search
         </NavLink>
-        <NavLink exact to="/">
+        <NavLink to="/upload">
           <button className="upload-btn">
-            <i class="fa-solid fa-cloud-arrow-up fa-2xl"></i>
+            <i className="fa-solid fa-cloud-arrow-up fa-2xl"></i>
           </button>
         </NavLink>
         <LogoutButton />

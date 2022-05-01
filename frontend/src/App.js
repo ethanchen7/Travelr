@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import Navigation from "./components/Navigation";
 import * as sessionActions from "./store/session";
 import HomePage from "./components/HomePage";
+import UploadPage from "./components/UploadPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <HomePage />
+          </Route>
+          <Route path="/upload">
+            <UploadPage />
           </Route>
         </Switch>
       )}

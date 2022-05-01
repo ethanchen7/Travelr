@@ -9,7 +9,7 @@ const LogoutButton = () => {
   };
   return (
     <button className="upload-btn" onClick={() => logoutClick()}>
-      <i class="fa-solid fa-right-from-bracket fa-2xl"></i>
+      <i className="fa-solid fa-right-from-bracket fa-2xl"></i>
     </button>
   );
 };

@@ -1,0 +1,14 @@
+.body-container {
+  position: absolute;
+  top: 75px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parent-images-container {
+  max-width: 80%;
+  display: inline-grid;
+  columns: 4;
+}

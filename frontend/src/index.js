@@ -7,6 +7,7 @@ import App from "./App";
 import configureStore from "./store";
 import { restoreCSRF, csrfFetch } from "./store/csrf";
 import * as sessionActions from "./store/session";
+import * as imageActions from "./store/image";
 
 import ModalProvider from "./context/Modal";
 
@@ -18,6 +19,7 @@ if (process.env.NODE_ENV !== "production") {
   window.csrfFetch = csrfFetch;
   window.store = store;
   window.sessionActions = sessionActions;
+  window.imageActions = imageActions;
 }
 
 function Root() {

@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import Footer from "../Footer";
 import SplashBody from "../SplashBody";
+import ExplorePage from "../ExplorePage";
 const HomePage = () => {
   const session = useSelector((state) => state.session.user);
   if (!session) {
@@ -11,7 +12,11 @@ const HomePage = () => {
       </>
     );
   } else {
-    return <>{/* explore page */}</>;
+    return (
+      <>
+        <ExplorePage />
+      </>
+    );
   }
 };
 
