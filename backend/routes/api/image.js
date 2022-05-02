@@ -2,7 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 
 const { requireAuth, restoreUser } = require("../../utils/auth");
-const { Image, Favorite } = require("../../db/models");
+const { Image, Favorite, User } = require("../../db/models");
 const { singleMulterUpload, singlePublicFileUpload } = require("../awsS3");
 
 const router = express.Router();
@@ -12,7 +12,13 @@ router.get(
   requireAuth,
   restoreUser,
   asyncHandler(async (req, res) => {
-    const images = await Image.findAll();
+    const images = await Image.findAll({
+      include: [
+        {
+          model: User,
+        },
+      ],
+    });
     return res.json(images);
   })
 );

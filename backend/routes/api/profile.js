@@ -8,7 +8,7 @@ const { Image, Profile, User } = require("../../db/models");
 const router = express.Router();
 
 router.get(
-  "/:userId",
+  "/:userId(\\d+)",
   requireAuth,
   restoreUser,
   asyncHandler(async (req, res) => {
@@ -26,8 +26,24 @@ router.get(
   })
 );
 
+// get all images created by a particular user to populate profile
+router.get(
+  "/:userId(\\d+)/images",
+  requireAuth,
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    const userId = req.params.userId;
+    const images = await Image.findAll({
+      where: {
+        userId,
+      },
+    });
+    res.json(images);
+  })
+);
+
 router.put(
-  "/:userId",
+  "/:userId(\\d+)",
   requireAuth,
   validateProfile,
   asyncHandler(async (req, res) => {
