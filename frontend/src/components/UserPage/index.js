@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { loadImages } from "../../store/profile";
+import { loadImages, loadDetails } from "../../store/profile";
 import UserPageHeader from "../UserPageHeader";
 import UserPageNavBar from "../UserPageNavBar";
 import ImageCard from "../ImageCard";
@@ -14,6 +14,7 @@ const UserPage = () => {
   const { id } = useParams();
   const images = useSelector((state) => state.profile.profileImages);
   const imageObjects = Object.values(images);
+  const details = useSelector((state) => state.profile.profileDetails);
 
   if (!sessionUser) {
     history.push("/");
@@ -21,16 +22,16 @@ const UserPage = () => {
 
   useEffect(() => {
     dispatch(loadImages(id));
+    dispatch(loadDetails(id));
   }, [dispatch]);
-  console.log(imageObjects);
   return (
     <div className="user-page-container">
-      <UserPageHeader />
+      <UserPageHeader details={details} />
       <UserPageNavBar />
       <div className="user-page-body">
         <div className="inner-container">
           {imageObjects?.map((img) => (
-            <ImageCard imageUrl={img.imageUrl} />
+            <ImageCard key={img.id} imageUrl={img.imageUrl} />
           ))}
         </div>
       </div>
