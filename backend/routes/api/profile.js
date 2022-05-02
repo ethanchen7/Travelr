@@ -20,9 +20,10 @@ router.get(
     });
     if (profile) {
       res.status(200);
-      return res.json(profile);
+      res.json(profile);
+    } else {
+      return res.status(404);
     }
-    return res.status(404);
   })
 );
 
@@ -56,7 +57,7 @@ router.put(
     if (profile) {
       await profile.update(req.body);
       await profile.save();
-      return res.json(profile);
+      res.json(profile);
     }
   })
 );
