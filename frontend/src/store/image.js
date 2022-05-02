@@ -20,36 +20,46 @@ export const getImages = () => async (dispatch) => {
   const res = await csrfFetch("/api/images");
 
   const data = await res.json();
+  console.log(data);
   dispatch(loadImages(data));
   return data;
 };
 
 export const uploadImage = (submission) => async (dispatch) => {
-  const { userId, tags, image } = submission;
+  const { userId, tag, image } = submission;
   const formData = new FormData();
   formData.append("userId", userId);
-  if (tags) formData.append("tags", tags);
+  if (tag) formData.append("tag", tag);
   if (image) formData.append("image", image);
   const res = await csrfFetch(`/api/images`, {
     method: "POST",
-    headers: {
-      //   "Content-Type": "multipart/form-data",
-    },
     body: formData,
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
   });
-  //   const data = await res.json();
-  //   dispatch(createImage(data));
+  if (res.ok) {
+    const image = await res.json();
+    dispatch(createImage(image));
+  } else {
+    const errors = await res.json();
+    console.log(errors);
+  }
 };
 
-const initialState = { images: [] };
+const initialState = { imageObjects: {}, imageArray: [] };
 
 const imageReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case LOAD:
-      newState = Object.assign({}, state);
-      newState.images = action.images;
-      return newState;
+      const imageObjects = {};
+      action.images.forEach((image) => (imageObjects[image.id] = image));
+      return {
+        ...state,
+        imageObjects,
+        imageArray: Object.values(imageObjects),
+      };
     case CREATE:
       newState = { ...state, [action.image.id]: action.image };
       return newState;

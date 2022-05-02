@@ -1,28 +1,28 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getImages } from "../../store/image";
 import ImageCard from "../ImageCard";
 import "./ExplorePage.css";
 
 const ExplorePage = () => {
-  //   const images = useSelector((state) => state.images.images);
+  const dispatch = useDispatch();
+  const imageObjects = useSelector((state) => state.images.imageObjects);
+  const images = Object.values(imageObjects).slice(0, 10);
+  useEffect(() => {
+    dispatch(getImages());
+  }, [dispatch]);
   return (
     <div className="body-container">
       <div className="inner-container">
-        <ImageCard imageType={"nature"} />
-        <ImageCard imageType={"sport"} />
-        <ImageCard imageType={"people"} />
-        <ImageCard imageType={"fitness"} />
-        <ImageCard imageType={"people"} />
-        <ImageCard imageType={"sport"} />
-        <ImageCard imageType={"food"} />
-        <ImageCard imageType={"travel"} />
-        <ImageCard imageType={"cars"} />
-        <ImageCard imageType={"sport"} />
-        <ImageCard imageType={"art"} />
-        <ImageCard imageType={"travel"} />
-
-        {/* {images?.map((image) => (
-        <ImageCard image={image} />
-      ))} */}
+        {images?.map((image) => {
+          return (
+            <ImageCard
+              key={image.id}
+              imageUrl={image.imageUrl}
+              imageType={image.favoriteCount}
+            />
+          );
+        })}
       </div>
     </div>
   );

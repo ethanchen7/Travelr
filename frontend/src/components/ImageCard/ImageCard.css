@@ -34,14 +34,10 @@
   pointer-events: none;
   z-index: 4;
   transition: 0.3s ease-in-out;
-  /* --webkit-backdrop-filter: blur(5px) saturate(1.8);
-  backdrop-filter: blur(5px) saturate(1.8); */
 }
 
 .gallery-item:hover .text {
   opacity: 1;
-  padding: 1em;
-  width: 100%;
 }
 
 /* add classes to each image to dynamically render the width and height */

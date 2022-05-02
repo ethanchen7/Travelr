@@ -1,0 +1,10 @@
+.user-page-container {
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  height: 95vh;
+}
+
+.user-page-body {
+  margin: 100px;
+}
