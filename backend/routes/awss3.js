@@ -1,6 +1,6 @@
 const AWS = require("aws-sdk");
 // name of your bucket here
-const NAME_OF_BUCKET = "travelr-ec";
+const NAME_OF_BUCKET = "travelr-app";
 
 const multer = require("multer");
 
@@ -38,7 +38,7 @@ const multiplePublicFileUpload = async (files) => {
   );
 };
 
-// --------------------------- Private UPLOAD ------------------------
+// --------------------------- Prviate UPLOAD ------------------------
 
 const singlePrivateFileUpload = async (file) => {
   const { originalname, mimetype, buffer } = await file;

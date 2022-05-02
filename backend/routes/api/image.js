@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 
 const { requireAuth, restoreUser } = require("../../utils/auth");
 const { Image, Favorite } = require("../../db/models");
-const { singleMulterUpload, singlePublicFileUpload } = require("../awss3");
+const { singleMulterUpload, singlePublicFileUpload } = require("../awsS3");
 
 const router = express.Router();
 
@@ -21,16 +21,15 @@ router.post(
   "/",
   singleMulterUpload("image"),
   asyncHandler(async (req, res) => {
-    const image = req.file;
     const { userId, tag } = req.body;
-    const imageUrl = await singlePublicFileUpload(image);
+    const imageUrl = await singlePublicFileUpload(req.file);
     const newImage = await Image.create({
       userId,
       tag,
       imageUrl,
     });
-    const createdImage = await Image.findByPk(newImage.id);
-    res.json(createdImage);
+    // const createdImage = await Image.findByPk(newImage.id);
+    res.json(newImage);
   })
 );
 
