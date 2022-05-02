@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as imageActions from "../../store/image";
 import "./UploadPage.css";
 
 const UploadPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const session = useSelector((state) => state.session.user);
   const [image, setImage] = useState(null);
   const [tag, setTag] = useState("");
@@ -18,6 +20,7 @@ const UploadPage = () => {
     };
 
     dispatch(imageActions.uploadImage(data));
+    history.push(`/users/${session.id}`);
   };
 
   const uploadFile = (e) => {

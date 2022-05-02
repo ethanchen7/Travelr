@@ -41,6 +41,7 @@ export const uploadImage = (submission) => async (dispatch) => {
   if (res.ok) {
     const image = await res.json();
     dispatch(createImage(image));
+    return image;
   } else {
     const errors = await res.json();
     console.log(errors);
