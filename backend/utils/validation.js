@@ -46,8 +46,17 @@ const validateSignup = [
   handleValidationErrors,
 ];
 
+const validateProfile = [
+  check("fullName").isLength({ max: 150 }),
+  check("location").isLength({ max: 200 }),
+  check("favoriteDestination").isLength({ max: 200 }),
+  check("occupation").isLength({ max: 100 }),
+  check("bio").isLength({ max: 500 }),
+];
+
 module.exports = {
   handleValidationErrors,
   validateLogin,
   validateSignup,
+  validateProfile,
 };
