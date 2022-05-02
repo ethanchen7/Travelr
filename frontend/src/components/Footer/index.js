@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <div className="splash-footer">
       {splashFooterTech.map((tech) => {
-        return <div>{tech}</div>;
+        return <div key={tech}>{tech}</div>;
       })}
 
       <a href="https://www.linkedin.com/in/ethan-chen-3b7070127/">

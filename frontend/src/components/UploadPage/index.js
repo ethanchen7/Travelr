@@ -6,21 +6,29 @@ import "./UploadPage.css";
 const UploadPage = () => {
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session.user);
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [tag, setTag] = useState("");
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
       userId: session.id,
       image,
       tag,
     };
+
     dispatch(imageActions.uploadImage(data));
   };
+
+  const uploadFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+  };
+
   return (
     <div className="upload-container">
       <form onSubmit={handleSubmit}>
-        <input type="file" onChange={(e) => setImage(e.target.value)} />
+        <input type="file" onChange={uploadFile} />
         <input
           type="text"
           name="tag"

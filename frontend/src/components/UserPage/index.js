@@ -1,10 +1,16 @@
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import UserPageHeader from "../UserPageHeader";
 import UserPageNavBar from "../UserPageNavBar";
 import ImageCard from "../ImageCard";
 import "./UserPage.css";
 
 const UserPage = () => {
+  const history = useHistory();
+  const sessionUser = useSelector((state) => state.session.user);
+  if (!sessionUser) {
+    history.push("/");
+  }
   return (
     <div className="user-page-container">
       <UserPageHeader />

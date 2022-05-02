@@ -1,11 +1,12 @@
 import "./ImageCard.css";
-const ImageCard = ({ imageType }) => {
+const ImageCard = ({ imageUrl, imageType }) => {
   return (
     <div className="gallery-container">
       <div className="gallery-item">
         <div className="image">
           <img
-            src={`https://source.unsplash.com/1600x900/?${imageType}`}
+            // src={`https://source.unsplash.com/1600x900/?${imageType}`}
+            src={`${imageUrl}`}
             alt={`${imageType}`}
           />
         </div>
