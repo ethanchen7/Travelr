@@ -31,7 +31,7 @@ const UserPage = () => {
       <div className="user-page-body">
         <div className="inner-container">
           {imageObjects?.map((img) => (
-            <ImageCard key={img.id} imageUrl={img.imageUrl} />
+            <ImageCard key={img.id} image={img} />
           ))}
         </div>
       </div>
