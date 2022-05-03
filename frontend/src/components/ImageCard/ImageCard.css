@@ -41,6 +41,18 @@
   opacity: 1;
 }
 
+.gallery-item .favorite-button-container {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.gallery-item:hover .favorite-button-container {
+  opacity: 1;
+}
+
 /* add classes to each image to dynamically render the width and height */
 .w-1 {
   grid-column: span 1;

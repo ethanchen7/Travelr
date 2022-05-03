@@ -1,6 +1,8 @@
 import { csrfFetch } from "./csrf";
 const LOAD = "image/LOAD";
 const CREATE = "image/CREATE";
+const FAVORITE = "image/FAVORITE";
+const DELETE_FAVORITE = "image/DELETE_FAVORITE";
 
 const loadImages = (images) => {
   return {
@@ -13,6 +15,19 @@ const createImage = (image) => {
   return {
     type: CREATE,
     image,
+  };
+};
+
+const favoriteImage = (favorite) => {
+  return {
+    type: FAVORITE,
+    favorite,
+  };
+};
+
+const deleteFavorite = () => {
+  return {
+    type: DELETE_FAVORITE,
   };
 };
 
@@ -48,7 +63,30 @@ export const uploadImage = (submission) => async (dispatch) => {
   }
 };
 
-const initialState = { imageObjects: {}, imageArray: [] };
+export const createFavorite = (payload) => async (dispatch) => {
+  const { userId, imageId } = payload;
+  const res = await csrfFetch(`/api/images/${imageId}/favorite`, {
+    method: "POST",
+    body: JSON.stringify({ userId, imageId }),
+  });
+  const favorite = await res.json();
+  //   console.log(favorite);
+  dispatch(favoriteImage(favorite));
+};
+
+export const removeFavorite = (payload) => async (dispatch) => {
+  const { userId, imageId } = payload;
+  const res = await csrfFetch(`/api/images/${imageId}/favorite`, {
+    method: "DELETE",
+    body: JSON.stringify({ userId }),
+  });
+  const data = await res.json();
+  console.log(data);
+  //   dispatch(deleteFavorite())
+};
+
+// imageArray: []
+const initialState = { imageObjects: {} };
 
 const imageReducer = (state = initialState, action) => {
   let newState;
@@ -59,11 +97,19 @@ const imageReducer = (state = initialState, action) => {
       return {
         ...state,
         imageObjects,
-        imageArray: Object.values(imageObjects),
+        // imageArray: Object.values(imageObjects),
       };
     case CREATE:
       newState = { ...state, [action.image.id]: action.image };
       return newState;
+    case FAVORITE:
+      const { userId, imageId } = action.favorite;
+      const newFavoriteCount = imageObjects[imageId].favoriteCount + 1;
+      imageObjects[imageId].favoriteCount = newFavoriteCount;
+      return {
+        ...state,
+        ...imageObjects,
+      };
     default:
       return state;
   }

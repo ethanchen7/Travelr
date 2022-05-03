@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import FavoriteButton from "../FavoriteButton";
 import "./ImageCard.css";
+
 const ImageCard = ({ image }) => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -24,6 +26,9 @@ const ImageCard = ({ image }) => {
             ref={imgElement}
             onLoad={() => handleLoad(imgElement)}
           />
+        </div>
+        <div className="favorite-button-container">
+          <FavoriteButton image={image} />
         </div>
         <div className="text">
           <p>{tagString}</p>
