@@ -5,3 +5,7 @@
 .fa-solid:hover {
   cursor: pointer;
 }
+
+.red {
+  color: red;
+}

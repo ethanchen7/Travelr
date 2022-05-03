@@ -38,10 +38,7 @@ router.get(
       where: {
         userId,
       },
-      include: [
-        { model: User },
-        //  { model: Favorite }
-      ],
+      include: [{ model: User }, { model: Favorite }],
     });
     res.json(images);
   })

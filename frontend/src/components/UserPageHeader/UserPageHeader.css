@@ -56,7 +56,7 @@
 }
 
 .user-details {
-  width: 50%;
+  width: 30%;
   /* height: 70%; */
   display: flex;
   flex-direction: column;

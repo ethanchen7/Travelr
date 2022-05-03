@@ -25,9 +25,10 @@ const favoriteImage = (favorite) => {
   };
 };
 
-const deleteFavorite = () => {
+const deleteFavorite = (favorite) => {
   return {
     type: DELETE_FAVORITE,
+    favorite,
   };
 };
 
@@ -35,7 +36,6 @@ export const getImages = () => async (dispatch) => {
   const res = await csrfFetch("/api/images");
 
   const data = await res.json();
-  console.log(data);
   dispatch(loadImages(data));
   return data;
 };
@@ -64,13 +64,18 @@ export const uploadImage = (submission) => async (dispatch) => {
 };
 
 export const createFavorite = (payload) => async (dispatch) => {
-  const { userId, imageId } = payload;
+  const { imageId, userId, imageUrl, favoriteCount, tags } = payload;
   const res = await csrfFetch(`/api/images/${imageId}/favorite`, {
     method: "POST",
     body: JSON.stringify({ userId, imageId }),
   });
   const favorite = await res.json();
-  //   console.log(favorite);
+
+  const updateRes = await csrfFetch(`/api/images/${imageId}/favorite`, {
+    method: "PUT",
+    body: JSON.stringify({ imageId, userId, imageUrl, favoriteCount, tags }),
+  });
+
   dispatch(favoriteImage(favorite));
 };
 
@@ -81,8 +86,7 @@ export const removeFavorite = (payload) => async (dispatch) => {
     body: JSON.stringify({ userId }),
   });
   const data = await res.json();
-  console.log(data);
-  //   dispatch(deleteFavorite())
+  dispatch(deleteFavorite(data.favorite));
 };
 
 // imageArray: []
@@ -100,16 +104,51 @@ const imageReducer = (state = initialState, action) => {
         // imageArray: Object.values(imageObjects),
       };
     case CREATE:
-      newState = { ...state, [action.image.id]: action.image };
+      newState = {
+        ...state,
+        [action.image.id]: action.image,
+        imageObjects: {
+          [action.image.id]: action.image,
+          ...state.imageObjects,
+        },
+      };
       return newState;
     case FAVORITE:
-      const { userId, imageId } = action.favorite;
-      const newFavoriteCount = imageObjects[imageId].favoriteCount + 1;
-      imageObjects[imageId].favoriteCount = newFavoriteCount;
-      return {
+      const oldFavoriteCount = parseInt(
+        state.imageObjects[action.favorite.imageId].favoriteCount
+      );
+      const newFavoriteCount = oldFavoriteCount + 1;
+      newState = {
         ...state,
-        ...imageObjects,
+        [action.favorite.imageId]: {
+          ...state[action.favorite.imageId],
+          favoriteCount: newFavoriteCount,
+          //   Favorites: [
+          //     ...state[action.favorite.imageId].Favorites,
+          //     {
+          //       userId: action.favorite.userId,
+          //       imageId: action.favorite.imageId,
+          //     },
+          //   ],
+        },
       };
+      newState.imageObjects[action.favorite.imageId].favoriteCount =
+        newFavoriteCount;
+      return newState;
+    case DELETE_FAVORITE:
+      const oldFavCount = parseInt(
+        state.imageObjects[action.favorite.imageId].favoriteCount
+      );
+      const newFavCount = oldFavCount - 1;
+      newState = {
+        ...state,
+        [action.favorite.imageId]: {
+          ...state[action.favorite.imageId],
+          favoriteCount: newFavCount,
+          //   Favorites: [...state[action.favorite.imageId].Favorites],
+        },
+      };
+    //   newState.imageObjects[action.favorite.imageId].Favorites.splice(1);
     default:
       return state;
   }

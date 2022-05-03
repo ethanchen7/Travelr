@@ -17,9 +17,9 @@ router.get(
         {
           model: User,
         },
-        // {
-        //   model: Favorite,
-        // },
+        {
+          model: Favorite,
+        },
       ],
     });
     return res.json(images);
@@ -60,6 +60,21 @@ router.post(
   asyncHandler(async (req, res) => {
     const favorite = await Favorite.create(req.body);
     res.json(favorite);
+  })
+);
+
+router.put(
+  "/:id(\\d+)/favorite",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const { imageId } = req.body;
+    await Image.update(req.body, {
+      where: {
+        id: imageId,
+      },
+    });
+    const image = await Image.findByPk(imageId);
+    res.json(image);
   })
 );
 
