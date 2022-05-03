@@ -15,7 +15,7 @@ const ExplorePage = () => {
     <div className="body-container">
       <div className="inner-container">
         {images?.map((image) => {
-          return <ImageCard key={image.id} image={image} />;
+          return <ImageCard key={image.id} image={image} explorePage={true} />;
         })}
       </div>
     </div>

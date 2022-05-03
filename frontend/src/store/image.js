@@ -76,7 +76,6 @@ export const createFavorite = (payload) => async (dispatch) => {
     body: JSON.stringify({ imageId, userId, imageUrl, favoriteCount, tags }),
   });
 
-  console.log(favorite);
   dispatch(favoriteImage(favorite));
 };
 
@@ -136,8 +135,20 @@ const imageReducer = (state = initialState, action) => {
       newState.imageObjects[action.favorite.imageId].favoriteCount =
         newFavoriteCount;
       return newState;
-    // case DELETE_FAVORITE:
-
+    case DELETE_FAVORITE:
+      const oldFavCount = parseInt(
+        state.imageObjects[action.favorite.imageId].favoriteCount
+      );
+      const newFavCount = oldFavCount - 1;
+      newState = {
+        ...state,
+        [action.favorite.imageId]: {
+          ...state[action.favorite.imageId],
+          favoriteCount: newFavCount,
+          //   Favorites: [...state[action.favorite.imageId].Favorites],
+        },
+      };
+    //   newState.imageObjects[action.favorite.imageId].Favorites.splice(1);
     default:
       return state;
   }

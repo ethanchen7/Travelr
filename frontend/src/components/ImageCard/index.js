@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FavoriteButton from "../FavoriteButton";
 import "./ImageCard.css";
 
-const ImageCard = ({ image }) => {
+const ImageCard = ({ image, explorePage }) => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const imgElement = React.useRef(null);
@@ -27,9 +27,13 @@ const ImageCard = ({ image }) => {
             onLoad={() => handleLoad(imgElement)}
           />
         </div>
-        <div className="favorite-button-container">
-          <FavoriteButton image={image} />
-        </div>
+        {explorePage ? (
+          <div className="favorite-button-container">
+            <FavoriteButton image={image} />
+          </div>
+        ) : (
+          ""
+        )}
         <div className="text">
           <p>{tagString}</p>
           <p>{`@${image.User.username}`}</p>
