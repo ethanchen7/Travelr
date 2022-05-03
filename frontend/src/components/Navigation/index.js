@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignUpFormModal";
+import UploadFormModal from "../UploadPage";
 import "./Navigation.css";
 import LogoutButton from "./LogoutButton";
 
@@ -27,11 +28,9 @@ function Navigation({ isLoaded }) {
         <NavLink exact to="/">
           Search
         </NavLink>
-        <NavLink to="/upload">
-          <button className="upload-btn">
-            <i className="fa-solid fa-cloud-arrow-up fa-2xl"></i>
-          </button>
-        </NavLink>
+
+        <UploadFormModal />
+
         <LogoutButton />
       </>
     );

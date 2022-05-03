@@ -36,7 +36,7 @@ const ImageCard = ({ image, explorePage }) => {
         )}
         <div className="text">
           <p>{tagString}</p>
-          <p>{`@${image.User.username}`}</p>
+          <p>{`@${image.User?.username}`}</p>
         </div>
       </div>
     </div>
