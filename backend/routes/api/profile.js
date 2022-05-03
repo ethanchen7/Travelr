@@ -38,6 +38,11 @@ router.get(
       where: {
         userId,
       },
+      include: [
+        {
+          model: User,
+        },
+      ],
     });
     res.json(images);
   })
