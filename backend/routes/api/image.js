@@ -26,6 +26,19 @@ router.get(
   })
 );
 
+// get single image
+router.get(
+  "/:id(\\d+)",
+  requireAuth,
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    const image = await Image.findByPk(req.params.id, {
+      include: [{ model: User }, { model: Favorite }],
+    });
+    return res.json(image);
+  })
+);
+
 router.post(
   "/",
   singleMulterUpload("image"),
