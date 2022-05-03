@@ -63,6 +63,21 @@ router.post(
   })
 );
 
+router.put(
+  "/:id(\\d+)/favorite",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const { imageId } = req.body;
+    await Image.update(req.body, {
+      where: {
+        id: imageId,
+      },
+    });
+    const image = await Image.findByPk(imageId);
+    res.json(image);
+  })
+);
+
 router.delete(
   "/:id(\\d+)/favorite",
   requireAuth,
