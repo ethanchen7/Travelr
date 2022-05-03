@@ -9,20 +9,25 @@ const UploadPage = ({ setShowModal }) => {
   const history = useHistory();
   const session = useSelector((state) => state.session.user);
   const [image, setImage] = useState(null);
-  const [tag, setTag] = useState("");
+  const [tags, setTags] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let errors = [];
+    let tagsArray;
+    if (tags.length) {
+      tagsArray = tags.split(",");
+      tagsArray = tagsArray.map((tag) => tag.replace(/\s+/g, ""));
+    }
     const data = {
       userId: session.id,
       image,
-      tag,
+      tags: tagsArray,
     };
 
     dispatch(imageActions.uploadImage(data));
     history.push("/");
-    // history.push(`/users/${session.id}`);
     setShowModal(false);
   };
 
@@ -59,10 +64,10 @@ const UploadPage = ({ setShowModal }) => {
           <input
             className="form-input"
             type="text"
-            name="tag"
-            value={tag}
+            name="tags"
+            value={tags}
             placeholder='Add tags! e.g. "paris, france, europe" (optional)'
-            onChange={(e) => setTag(e.target.value)}
+            onChange={(e) => setTags(e.target.value)}
           />
         </div>
         <button className="submitBtn uploadImg-btn" type="submit">

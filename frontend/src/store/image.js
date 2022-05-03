@@ -41,10 +41,10 @@ export const getImages = () => async (dispatch) => {
 };
 
 export const uploadImage = (submission) => async (dispatch) => {
-  const { userId, tag, image } = submission;
+  const { userId, tags, image } = submission;
   const formData = new FormData();
   formData.append("userId", userId);
-  if (tag) formData.append("tag", tag);
+  if (tags) formData.append("tags", tags);
   if (image) formData.append("image", image);
   const res = await csrfFetch(`/api/images`, {
     method: "POST",
