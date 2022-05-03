@@ -5,6 +5,7 @@ import Navigation from "./components/Navigation";
 import * as sessionActions from "./store/session";
 import HomePage from "./components/HomePage";
 import UserPage from "./components/UserPage";
+import SingleImagePage from "./components/SingleImagePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path="/users/:id">
             <UserPage />
+          </Route>
+          <Route path="/image/:id">
+            <SingleImagePage />
           </Route>
         </Switch>
       )}
