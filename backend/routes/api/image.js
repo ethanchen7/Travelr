@@ -17,9 +17,9 @@ router.get(
         {
           model: User,
         },
-        // {
-        //   model: Favorite,
-        // },
+        {
+          model: Favorite,
+        },
       ],
     });
     return res.json(images);
