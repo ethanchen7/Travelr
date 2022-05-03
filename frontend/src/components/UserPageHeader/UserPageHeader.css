@@ -2,12 +2,27 @@
   height: 200px;
 }
 
-.user-information {
-  width: 100%;
+.user-page-cover-photo {
   height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.user-page-cover-photo > img {
+  object-fit: cover;
+  z-index: -10;
+}
+
+.user-information {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 200px;
   background-color: rgb(27, 27, 27, 0.25);
   display: flex;
   flex-direction: row;
+  z-index: 10;
 }
 
 .user-profile {
@@ -42,8 +57,14 @@
 
 .user-details {
   width: 50%;
+  /* height: 70%; */
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   color: white;
+  padding: 16px 0px 16px 0px;
+}
+
+.user-details > p {
+  line-height: 3px;
 }

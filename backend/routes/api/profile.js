@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 
 const { validateProfile } = require("../../utils/validation");
 const { requireAuth, restoreUser } = require("../../utils/auth");
-const { Image, Profile, User } = require("../../db/models");
+const { Image, Profile, User, Favorite } = require("../../db/models");
 
 const router = express.Router();
 
@@ -20,9 +20,10 @@ router.get(
     });
     if (profile) {
       res.status(200);
-      return res.json(profile);
+      res.json(profile);
+    } else {
+      return res.status(404);
     }
-    return res.status(404);
   })
 );
 
@@ -37,6 +38,10 @@ router.get(
       where: {
         userId,
       },
+      include: [
+        { model: User },
+        //  { model: Favorite }
+      ],
     });
     res.json(images);
   })
@@ -56,7 +61,7 @@ router.put(
     if (profile) {
       await profile.update(req.body);
       await profile.save();
-      return res.json(profile);
+      res.json(profile);
     }
   })
 );

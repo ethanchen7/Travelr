@@ -17,6 +17,9 @@ router.get(
         {
           model: User,
         },
+        // {
+        //   model: Favorite,
+        // },
       ],
     });
     return res.json(images);
@@ -73,7 +76,7 @@ router.delete(
       },
     });
     await favorite.destroy();
-    res.json({ message: "favorite removed" });
+    res.json({ message: "favorite removed", favorite });
   })
 );
 
