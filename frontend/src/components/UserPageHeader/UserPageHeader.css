@@ -22,19 +22,31 @@
   background-color: rgb(27, 27, 27, 0.25);
   display: flex;
   flex-direction: row;
+  justify-content: center;
   z-index: 10;
 }
 
 .user-profile {
-  width: 50%;
+  width: 40%;
   padding: 20px;
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
 }
 
 .user-profile-icon-container {
-  width: 80%;
-  justify-self: flex-end;
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 40px;
+}
+
+.user-profile-icon-container > img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
 }
 
 .user-profile-text-container {
@@ -42,7 +54,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 50%;
+  width: 30%;
 }
 
 .user-profile-title {
@@ -61,6 +73,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: flex-start;
   color: white;
   padding: 16px 0px 16px 0px;
 }

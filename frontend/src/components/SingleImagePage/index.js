@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, NavLink } from "react-router-dom";
 import { getSingleImage } from "../../store/image";
 import { getComments } from "../../store/comment";
+import { loadDetails } from "../../store/profile";
 import CommentFormModal from "../CommentForm";
 import DeleteCommentModal from "../DeleteCommentModal";
 import EditCommentForm from "../EditCommentForm";
+import FavoriteButton from "../FavoriteButton";
 import "./SingleImagePage.css";
 
 const SingleImagePage = () => {
@@ -39,15 +41,16 @@ const SingleImagePage = () => {
                 <img src={`${image.imageUrl}`} alt="profilepic"></img>
               </div>
               <div className="profile-details">
-                <p>{`@${image.User.username}`}</p>
+                <NavLink
+                  to={`/users/${image.User.id}`}
+                >{`@${image.User.username}`}</NavLink>
                 <p>{`${image.tags[0].toUpperCase()}`}</p>
               </div>
             </div>
             <div className="engagement-container">
               <div className="favorite-details">
-                <div className="line-break"></div>
-                <p>{`${image.favoriteCount} people faved this`}</p>
-                <div className="line-break"></div>
+                <FavoriteButton image={image} small={true} />
+                <span>{`${image.favoriteCount} people faved this`}</span>
               </div>
               <div className="comment-container">
                 {comments.map((comment) => (

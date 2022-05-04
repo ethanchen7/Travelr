@@ -29,7 +29,6 @@ export const loadDetails = (userId) => async (dispatch) => {
   const res = await csrfFetch(`/api/profile/${userId}`);
   if (res.ok) {
     const details = await res.json();
-    console.log(details);
     dispatch(loadProfileDetails(details));
   }
 };

@@ -33,10 +33,11 @@ const favoriteImage = (favorite) => {
   };
 };
 
-const deleteFavorite = (favorite) => {
+const deleteFavorite = (favorite, userId) => {
   return {
     type: DELETE_FAVORITE,
     favorite,
+    userId,
   };
 };
 
@@ -100,7 +101,7 @@ export const removeFavorite = (payload) => async (dispatch) => {
     body: JSON.stringify({ userId }),
   });
   const data = await res.json();
-  dispatch(deleteFavorite(data.favorite));
+  dispatch(deleteFavorite(data.favorite, data.userId));
 };
 
 // imageArray: []
@@ -161,16 +162,26 @@ const imageReducer = (state = initialState, action) => {
         state.imageObjects[action.favorite.imageId].favoriteCount
       );
       const newFavCount = oldFavCount - 1;
+      const favIdx = state.imageObjects[
+        action.favorite.Image.id
+      ].Favorites.findIndex((favorite) => favorite.userId === action.userId);
       newState = {
         ...state,
-        [action.favorite.imageId]: {
-          ...state[action.favorite.imageId],
-          favoriteCount: newFavCount,
-          //   Favorites: [...state[action.favorite.imageId].Favorites],
+        imageObjects: {
+          ...state.imageObjects,
+          [action.favorite.Image.id]: {
+            ...state.imageObjects[action.favorite.Image.id],
+            favoriteCount: newFavCount,
+            Favorites: [
+              ...state.imageObjects[action.favorite.Image.id].Favorites,
+            ],
+          },
         },
       };
-      return newState;
-    //   newState.imageObjects[action.favorite.imageId].Favorites.splice(1);
+      newState.imageObjects[action.favorite.Image.id].Favorites.splice(
+        favIdx,
+        1
+      );
     default:
       return state;
   }

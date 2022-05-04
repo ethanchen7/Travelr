@@ -9,6 +9,7 @@ import "./UserPage.css";
 
 const UserPage = () => {
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const { id } = useParams();
@@ -21,22 +22,28 @@ const UserPage = () => {
   }
 
   useEffect(() => {
-    dispatch(loadImages(id));
-    dispatch(loadDetails(id));
+    dispatch(loadImages(id))
+      .then(() => dispatch(loadDetails(id)))
+      .then(() => setIsLoaded(true));
   }, [dispatch]);
-  return (
-    <div className="user-page-container">
-      <UserPageHeader details={details} />
-      <UserPageNavBar />
-      <div className="user-page-body">
-        <div className="inner-container">
-          {imageObjects?.map((img) => (
-            <ImageCard key={img.id} image={img} />
-          ))}
+
+  if (!isLoaded) {
+    return null;
+  } else {
+    return (
+      <div className="user-page-container">
+        <UserPageHeader details={details} />
+        <UserPageNavBar />
+        <div className="user-page-body">
+          <div className="inner-container">
+            {imageObjects?.map((img) => (
+              <ImageCard key={img.id} image={img} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default UserPage;

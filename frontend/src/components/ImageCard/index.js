@@ -37,7 +37,7 @@ const ImageCard = ({ image, explorePage }) => {
         </div>
         {explorePage ? (
           <div className="favorite-button-container">
-            <FavoriteButton image={image} />
+            <FavoriteButton image={image} small={false} />
           </div>
         ) : (
           ""

@@ -31,26 +31,33 @@
 }
 
 .profile-container {
+  margin-top: 20px;
   width: 30%;
   height: 100px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .profile-picture {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  width: 120px;
+  height: 120px;
 }
 .profile-picture > img {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
 }
 .profile-details {
+  padding: 20px;
   display: flex;
   flex-direction: column;
+}
+
+.profile-details > a:link,
+.profile-details > a:visited {
+  color: #006dac;
 }
 .engagement-container {
   width: 40%;
@@ -60,15 +67,20 @@
   align-items: center;
 }
 .favorite-details {
+  margin-top: 10px;
   width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 
-.favorite-details > p {
+.favorite-details > span {
+  margin-left: 7px;
   text-align: center;
-}
-
-.line-break {
-  width: 100%;
+  font-weight: bold;
 }
 
 .comment-container {
