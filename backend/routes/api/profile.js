@@ -17,6 +17,7 @@ router.get(
       where: {
         userId,
       },
+      include: [{ model: User }],
     });
     if (profile) {
       res.status(200);

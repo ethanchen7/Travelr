@@ -96,9 +96,11 @@ router.delete(
         userId,
         imageId,
       },
+      include: [{ model: Image }, { model: User }],
     });
+    console.log(favorite);
     await favorite.destroy();
-    res.json({ message: "favorite removed", favorite });
+    res.status(24).json(favorite, userId);
   })
 );
 
