@@ -31,14 +31,14 @@ const SingleImagePage = () => {
               <img src={`/images/linkedinedited.png`} alt="profilepic"></img>
             </div>
             <div className="profile-details">
-              <p>@ethanchenn</p>
+              <p>{`@${image.User.username}`}</p>
               <p>TAG STRING</p>
             </div>
           </div>
           <div className="engagement-container">
             <div className="favorite-details">
               <div className="line-break"></div>
-              <p>88 people faved this</p>
+              <p>{`${image.favoriteCount} people faved this`}</p>
               <div className="line-break"></div>
             </div>
             <div className="comment-container">
