@@ -43,7 +43,10 @@ router.put(
   asyncHandler(async (req, res) => {
     const comment = await Comment.findByPk(req.params.commentId);
     const newComment = await comment.update(req.body);
-    res.json({ newComment, message: "edited" });
+    const editedComment = await Comment.findByPk(newComment.id, {
+      include: [{ model: User }],
+    });
+    res.json({ editedComment });
   })
 );
 
