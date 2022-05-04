@@ -23,4 +23,15 @@ router.get(
   })
 );
 
+router.post(
+  "/:imageId(\\d+)",
+  requireAuth,
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    const imageId = req.params.imageId;
+    const newComment = await Comment.create(req.body);
+    return res.json(newComment);
+  })
+);
+
 module.exports = router;
