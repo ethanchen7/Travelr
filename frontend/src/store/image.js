@@ -101,6 +101,7 @@ export const removeFavorite = (payload) => async (dispatch) => {
     body: JSON.stringify({ userId }),
   });
   const data = await res.json();
+  console.log(data);
   dispatch(deleteFavorite(data.favorite, data.userId));
 };
 
@@ -142,29 +143,37 @@ const imageReducer = (state = initialState, action) => {
       const newFavoriteCount = oldFavoriteCount + 1;
       newState = {
         ...state,
-        [action.favorite.imageId]: {
-          ...state[action.favorite.imageId],
-          favoriteCount: newFavoriteCount,
-          //   Favorites: [
-          //     ...state[action.favorite.imageId].Favorites,
-          //     {
-          //       userId: action.favorite.userId,
-          //       imageId: action.favorite.imageId,
-          //     },
-          //   ],
+        imageObjects: {
+          ...state.imageObjects,
+          [action.favorite.imageId]: {
+            ...state.imageObjects[action.favorite.imageId],
+            favoriteCount: newFavoriteCount,
+            Favorites: [
+              ...state.imageObjects[action.favorite.imageId].Favorites,
+              {
+                userId: action.favorite.userId,
+                imageId: action.favorite.imageId,
+              },
+            ],
+          },
         },
       };
       newState.imageObjects[action.favorite.imageId].favoriteCount =
         newFavoriteCount;
       return newState;
     case DELETE_FAVORITE:
+      console.log(action.favorite);
       const oldFavCount = parseInt(
         state.imageObjects[action.favorite.imageId].favoriteCount
       );
       const newFavCount = oldFavCount - 1;
       const favIdx = state.imageObjects[
         action.favorite.Image.id
-      ].Favorites.findIndex((favorite) => favorite.userId === action.userId);
+      ].Favorites.findIndex(
+        (favorite) => favorite.userId === action.favorite.userId
+      );
+      console.log(state.imageObjects[action.favorite.Image.id]);
+      console.log(oldFavCount, newFavCount, favIdx);
       newState = {
         ...state,
         imageObjects: {
