@@ -127,32 +127,32 @@ module.exports = {
         },
         {
           userId: 1,
-          imageId: 5,
+          imageId: 4,
           text: "Canada's most beautiful attraction!",
         },
         {
           userId: 2,
-          imageId: 5,
+          imageId: 4,
           text: "Going there next week. Excited.",
         },
         {
           userId: 3,
-          imageId: 5,
+          imageId: 4,
           text: "Wow, great shot",
         },
         {
           userId: 4,
-          imageId: 5,
+          imageId: 4,
           text: "Amazing",
         },
         {
           userId: 5,
-          imageId: 5,
+          imageId: 4,
           text: "Go for a swim?",
         },
         {
           userId: 6,
-          imageId: 5,
+          imageId: 4,
           text: "We love canada",
         },
         {
@@ -163,7 +163,7 @@ module.exports = {
         {
           userId: 2,
           imageId: 6,
-          text: "This really captures the atmosphere of France",
+          text: "Washington DC!",
         },
         {
           userId: 3,
@@ -217,32 +217,32 @@ module.exports = {
         },
         {
           userId: 1,
-          imageId: 8,
+          imageId: 5,
           text: "I love Japan!",
         },
         {
           userId: 2,
-          imageId: 8,
+          imageId: 5,
           text: "This place was pretty crowded when I went.",
         },
         {
           userId: 3,
-          imageId: 8,
+          imageId: 5,
           text: "How did you get such a great shot!",
         },
         {
           userId: 4,
-          imageId: 8,
+          imageId: 5,
           text: "Wow the colors really pop here",
         },
         {
           userId: 5,
-          imageId: 8,
+          imageId: 5,
           text: "Great shot",
         },
         {
           userId: 6,
-          imageId: 8,
+          imageId: 5,
           text: "This place is such a great attraction",
         },
         {
@@ -273,7 +273,7 @@ module.exports = {
         {
           userId: 6,
           imageId: 9,
-          text: "Washington DC!!",
+          text: "San Francisco!",
         },
         {
           userId: 1,
@@ -283,12 +283,12 @@ module.exports = {
         {
           userId: 2,
           imageId: 10,
-          text: "wow, those skyscrapers",
+          text: "wow, that lighting effect",
         },
         {
           userId: 3,
           imageId: 10,
-          text: "Empire State is soo tall!",
+          text: "What a cool angle",
         },
         {
           userId: 4,
@@ -308,12 +308,12 @@ module.exports = {
         {
           userId: 1,
           imageId: 11,
-          text: "Greece is definitely a place of my bucket lists",
+          text: "Bali is definitely a place of my bucket lists",
         },
         {
           userId: 2,
           imageId: 11,
-          text: "Gonna check Greece out next month",
+          text: "Gonna check Bali out next month",
         },
         {
           userId: 3,
@@ -393,7 +393,7 @@ module.exports = {
         {
           userId: 6,
           imageId: 13,
-          text: "The lights are really prominent",
+          text: "Bali is so cool",
         },
         {
           userId: 1,
@@ -418,7 +418,7 @@ module.exports = {
         {
           userId: 5,
           imageId: 14,
-          text: "These buildings are beautiful",
+          text: "These lights are beautiful",
         },
         {
           userId: 6,
@@ -428,12 +428,12 @@ module.exports = {
         {
           userId: 1,
           imageId: 15,
-          text: "Truly the bay area",
+          text: "I want to go visit!",
         },
         {
           userId: 2,
           imageId: 15,
-          text: "Always foggy",
+          text: "Always smoggy",
         },
         {
           userId: 3,
@@ -443,17 +443,17 @@ module.exports = {
         {
           userId: 4,
           imageId: 15,
-          text: "The color is so beautiful",
+          text: "Seoul's finest view",
         },
         {
           userId: 5,
           imageId: 15,
-          text: "I love San Francisco!",
+          text: "What a pretty landscape",
         },
         {
           userId: 6,
           imageId: 15,
-          text: "Gotta hit up SF some time soon!",
+          text: "Seoul is beautiful!",
         },
         {
           userId: 1,
@@ -463,12 +463,12 @@ module.exports = {
         {
           userId: 2,
           imageId: 16,
-          text: "Was this at a museum?",
+          text: "This really captures its vast size",
         },
         {
           userId: 3,
           imageId: 16,
-          text: "The Eiffel Tower is truly iconic",
+          text: "Iconic!",
         },
         {
           userId: 4,
@@ -493,22 +493,22 @@ module.exports = {
         {
           userId: 2,
           imageId: 17,
-          text: "Where is this!",
+          text: "I love budajigae!!",
         },
         {
           userId: 3,
           imageId: 17,
-          text: "Such a calming shot",
+          text: "What a candid shot",
         },
         {
           userId: 4,
           imageId: 17,
-          text: "This is amazing",
+          text: "Cool!",
         },
         {
           userId: 5,
           imageId: 17,
-          text: "Those mountains in the back, wow",
+          text: "yummy",
         },
         {
           userId: 6,
@@ -518,7 +518,7 @@ module.exports = {
         {
           userId: 1,
           imageId: 18,
-          text: "The sky is so pretty",
+          text: "That tower is so pretty",
         },
         {
           userId: 2,
@@ -533,7 +533,7 @@ module.exports = {
         {
           userId: 4,
           imageId: 18,
-          text: "Cotton candy sunsets!",
+          text: "Beautiful!",
         },
         {
           userId: 5,
@@ -548,7 +548,7 @@ module.exports = {
         {
           userId: 1,
           imageId: 19,
-          text: "This really captures the dimensions of this building",
+          text: "We love noodles!",
         },
         {
           userId: 2,
@@ -558,22 +558,22 @@ module.exports = {
         {
           userId: 3,
           imageId: 19,
-          text: "I love this!",
+          text: "I love the shade of gray overlay",
         },
         {
           userId: 4,
           imageId: 19,
-          text: "NYC really does have great sights",
+          text: "I'm hungry all of a sudden",
         },
         {
           userId: 5,
           imageId: 19,
-          text: "Amazing shot",
+          text: "This picture is calming for some reason",
         },
         {
           userId: 6,
           imageId: 19,
-          text: "Whoa!",
+          text: "Ramen anyone?",
         },
         {
           userId: 1,
@@ -593,12 +593,12 @@ module.exports = {
         {
           userId: 4,
           imageId: 20,
-          text: "I think I know where this is!",
+          text: "What an amazing shot!",
         },
         {
           userId: 5,
           imageId: 20,
-          text: "I've been here before!",
+          text: "Is this gwangjang market?",
         },
         {
           userId: 6,
@@ -608,32 +608,32 @@ module.exports = {
         {
           userId: 1,
           imageId: 21,
-          text: "The water is so CLEAR!",
+          text: "Awesome",
         },
         {
           userId: 2,
           imageId: 21,
-          text: "Wow that water is blue",
+          text: "So much good food",
         },
         {
           userId: 3,
           imageId: 21,
-          text: "Imagine rowing in those boats! Would be fun",
+          text: "I wish I were in Japan!",
         },
         {
           userId: 4,
           imageId: 21,
-          text: "I gotta visit this place some time!",
+          text: "Really captures the busy atmosphere",
         },
         {
           userId: 5,
           imageId: 21,
-          text: "Really awesome shot, thanks",
+          text: "I think I know where this is",
         },
         {
           userId: 6,
           imageId: 21,
-          text: "Calming",
+          text: "What a busy street!",
         },
         {
           userId: 1,
@@ -643,22 +643,22 @@ module.exports = {
         {
           userId: 2,
           imageId: 22,
-          text: "This looks magical",
+          text: "Looks unreal",
         },
         {
           userId: 3,
           imageId: 22,
-          text: "I really need to visit Bali",
+          text: "Cool",
         },
         {
           userId: 4,
           imageId: 22,
-          text: "Amazing, almost doesn't look real",
+          text: "What a magnificent design",
         },
         {
           userId: 5,
           imageId: 22,
-          text: "The green really pops",
+          text: "Wow the colors on this",
         },
         {
           userId: 6,
@@ -668,17 +668,17 @@ module.exports = {
         {
           userId: 1,
           imageId: 23,
-          text: "Wow, i love SF",
+          text: "Great city",
         },
         {
           userId: 2,
           imageId: 23,
-          text: "Land of the tech!",
+          text: "Tokyo!",
         },
         {
           userId: 3,
           imageId: 23,
-          text: "What a beautiful day this was shot on!",
+          text: "Really captures the busy atmosphere",
         },
         {
           userId: 4,
@@ -703,27 +703,27 @@ module.exports = {
         {
           userId: 2,
           imageId: 24,
-          text: "Bali is crazy cool",
+          text: "Wow what a nice shot",
         },
         {
           userId: 3,
           imageId: 24,
-          text: "Is that a volcano",
+          text: "The sky is so blue",
         },
         {
           userId: 4,
           imageId: 24,
-          text: "What is this place called?",
+          text: "Cherry blossoms!!",
         },
         {
           userId: 5,
           imageId: 24,
-          text: "Amazing, the clouds really add to the shot",
+          text: "What is this tower called again?",
         },
         {
           userId: 6,
           imageId: 24,
-          text: "Beautiful sunset",
+          text: "Such a beautiful shot",
         },
       ],
       {}
