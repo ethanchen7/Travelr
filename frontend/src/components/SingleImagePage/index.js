@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSingleImage } from "../../store/image";
 import { getComments } from "../../store/comment";
+import CommentFormModal from "../CommentForm";
 import "./SingleImagePage.css";
 
 const SingleImagePage = () => {
@@ -17,43 +18,50 @@ const SingleImagePage = () => {
   useEffect(() => {
     dispatch(getSingleImage(imageId));
     dispatch(getComments(imageId));
-  }, [dispatch]);
-  console.log(comments);
-  return (
-    <div className="single-image-body-container">
-      <div className="image-container">
-        {image && <img src={image.imageUrl} alt="display-img"></img>}
-      </div>
-      <div className="image-information-container">
-        <div className="image-details">
-          <div className="profile-container">
-            <div className="profile-picture">
-              <img src={`/images/linkedinedited.png`} alt="profilepic"></img>
+  }, []);
+
+  if (!image || !comments) {
+    return null;
+  } else {
+    return (
+      <div className="single-image-body-container">
+        <div className="image-container">
+          {image && <img src={image.imageUrl} alt="display-img"></img>}
+        </div>
+        <div className="image-information-container">
+          <div className="image-details">
+            <div className="profile-container">
+              <div className="profile-picture">
+                <img src={`${image.imageUrl}`} alt="profilepic"></img>
+              </div>
+              <div className="profile-details">
+                <p>{`@${image.User.username}`}</p>
+                <p>{`${image.tags[0].toUpperCase()}`}</p>
+              </div>
             </div>
-            <div className="profile-details">
-              <p>{`@${image.User.username}`}</p>
-              <p>TAG STRING</p>
-            </div>
-          </div>
-          <div className="engagement-container">
-            <div className="favorite-details">
-              <div className="line-break"></div>
-              <p>{`${image.favoriteCount} people faved this`}</p>
-              <div className="line-break"></div>
-            </div>
-            <div className="comment-container">
-              {comments?.map((comment) => (
-                <div className="comment" key={`${comment.id}`}>
-                  <p>{`@${comment.User.username}`}</p>
-                  <p>{comment.text}</p>
-                </div>
-              ))}
+            <div className="engagement-container">
+              <div className="favorite-details">
+                <div className="line-break"></div>
+                <p>{`${image.favoriteCount} people faved this`}</p>
+                <div className="line-break"></div>
+              </div>
+              <div className="comment-container">
+                {comments?.map((comment) => (
+                  <div className="comment" key={`${comment.id}`}>
+                    <p>{`@${comment.User.username}`}</p>
+                    <p>{comment.text}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="add-comment-btn">
+                <CommentFormModal imageId={imageId}/>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default SingleImagePage;

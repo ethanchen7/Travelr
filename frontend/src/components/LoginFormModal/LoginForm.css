@@ -40,6 +40,10 @@
   margin-bottom: 10px;
 }
 
+.input-container > textarea {
+  resize: none;
+}
+
 .form-input {
   width: 76%;
   padding: 10px;
