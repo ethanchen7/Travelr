@@ -1,26 +1,29 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { getSingleImage } from "../../store/image";
 import { getComments } from "../../store/comment";
 import CommentFormModal from "../CommentForm";
+import DeleteCommentModal from "../DeleteCommentModal";
 import "./SingleImagePage.css";
 
 const SingleImagePage = () => {
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
   const { id } = useParams();
   const imageId = parseInt(id);
   const sessionUser = useSelector((state) => state.session.user);
-  const image = useSelector((state) => state.images.imageObjects)[imageId];
+  const image = useSelector((state) => state.images?.imageObjects)[imageId];
   const commentObjects = useSelector((state) => state.comment.imageComments);
   const comments = Object.values(commentObjects);
 
   useEffect(() => {
-    dispatch(getSingleImage(imageId));
-    dispatch(getComments(imageId));
+    dispatch(getSingleImage(imageId))
+      .then(() => dispatch(getComments(imageId)))
+      .then(() => setIsLoaded(true));
   }, []);
 
-  if (!image || !comments) {
+  if (!isLoaded) {
     return null;
   } else {
     return (
@@ -46,15 +49,27 @@ const SingleImagePage = () => {
                 <div className="line-break"></div>
               </div>
               <div className="comment-container">
-                {comments?.map((comment) => (
+                {comments.map((comment) => (
                   <div className="comment" key={`${comment.id}`}>
-                    <p>{`@${comment.User.username}`}</p>
-                    <p>{comment.text}</p>
+                    <div className="comment-details">
+                      <NavLink
+                        to={`/users/${comment.User.id}`}
+                      >{`@${comment.User.username}`}</NavLink>
+                      <p>{comment.text}</p>
+                    </div>
+                    {comment.User.id === sessionUser.id ? (
+                      <div className="comment-icons">
+                        <i className="fa-solid fa-pen-to-square"></i>
+                        <DeleteCommentModal comment={comment} />
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 ))}
               </div>
               <div className="add-comment-btn">
-                <CommentFormModal imageId={imageId}/>
+                <CommentFormModal imageId={imageId} />
               </div>
             </div>
           </div>

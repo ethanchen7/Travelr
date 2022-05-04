@@ -2,6 +2,8 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_COMMENTS = "comment/LOAD_COMMENTS";
 const CREATE_COMMENT = "comment/CREATE_COMMENT";
+const EDIT_COMMENT = "comment/EDIT_COMMENT";
+const DELETE_COMMENT = "comment/DELETE_COMMENT";
 
 export const loadComments = (comments) => {
   return {
@@ -13,6 +15,20 @@ export const loadComments = (comments) => {
 export const createComment = (comment) => {
   return {
     type: CREATE_COMMENT,
+    comment,
+  };
+};
+
+export const editComment = (comment) => {
+  return {
+    type: EDIT_COMMENT,
+    comment,
+  };
+};
+
+export const deleteComment = (comment) => {
+  return {
+    type: DELETE_COMMENT,
     comment,
   };
 };
@@ -32,6 +48,18 @@ export const postComment = (payload) => async (dispatch) => {
   dispatch(createComment(newComment));
 };
 
+export const putComment = (payload) => async (dispatch) => {
+  const res = await csrfFetch(`/api/comments/${payload.commentId}`);
+};
+
+export const removeComment = (commentId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/comments/${commentId}`, {
+    method: "DELETE",
+  });
+  const data = await res.json();
+  dispatch(deleteComment(data.comment));
+};
+
 const initialState = { imageComments: {} };
 
 const commentReducer = (state = initialState, action) => {
@@ -49,10 +77,14 @@ const commentReducer = (state = initialState, action) => {
       return {
         ...state,
         imageComments: {
-          ...imageComments,
+          ...state.imageComments,
           [action.comment.id]: action.comment,
         },
       };
+    case DELETE_COMMENT:
+      const newState = { ...state };
+      delete newState.imageComments[action.comment.id];
+      return newState;
     default:
       return state;
   }

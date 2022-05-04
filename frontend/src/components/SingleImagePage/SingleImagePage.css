@@ -20,7 +20,7 @@
   top: 800px;
   width: 80%;
   height: fit-content;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .image-details {
@@ -32,6 +32,7 @@
 
 .profile-container {
   width: 30%;
+  height: 100px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -53,6 +54,7 @@
 }
 .engagement-container {
   width: 40%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,14 +75,34 @@
   margin-top: 10px;
   width: 100%;
   height: fit-content;
-  border: 1px solid pink;
+  /* border: 1px solid pink; */
 }
 
 .comment {
   display: flex;
   flex-direction: row;
-  height: fit-content;
+  height: 50px;
   width: 100%;
+}
+
+.comment-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 80%;
+}
+
+.comment-details > a,
+.comment-details > p {
+  font-size: 14px;
+  line-height: 5px;
+  margin: 7px;
+}
+
+.comment-details > a:link,
+.comment-details > a:visited {
+  color: #006dac;
 }
 
 .add-comment-btn {
@@ -88,4 +110,20 @@
   height: 40px;
   margin-top: 10px;
   margin-bottom: 30px;
+}
+
+.comment-icons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  width: 30%;
+}
+
+.comment-icons > i {
+  margin-right: 7px;
+  color: rgb(192, 192, 192);
+}
+
+.comment-icons > i:hover {
+  color: rgb(101, 101, 101);
 }

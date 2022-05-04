@@ -1,26 +1,27 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { postComment } from "../../store/comment";
 import "../LoginFormModal/LoginForm.css";
 
 const CommentForm = ({ setShowModal, imageId }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const session = useSelector((state) => state.session.user);
-  const [comment, setComment] = useState("");
+  const [text, setText] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     let errors = [];
     const data = {
-      userId: session.user.id,
+      userId: session.id,
       imageId,
-      comment,
+      text,
     };
 
-    // dispatch(imageActions.uploadImage(data));
-    history.push("/");
+    dispatch(postComment(data));
+    // history.push("/");
     setShowModal(false);
   };
 
@@ -44,8 +45,8 @@ const CommentForm = ({ setShowModal, imageId }) => {
         <div className="input-container">
           <textarea
             className="form-input"
-            type="text"
-            onChange={(e) => setComment(e.target.value)}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
           />
         </div>
         <button className="submitBtn uploadImg-btn" type="submit">
