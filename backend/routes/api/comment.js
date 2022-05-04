@@ -28,9 +28,32 @@ router.post(
   requireAuth,
   restoreUser,
   asyncHandler(async (req, res) => {
-    const imageId = req.params.imageId;
     const newComment = await Comment.create(req.body);
-    return res.json(newComment);
+    const comment = await Comment.findByPk(newComment.id, {
+      include: [{ model: User }],
+    });
+    return res.json(comment);
+  })
+);
+
+router.put(
+  "/:commentId(\\d+)",
+  requireAuth,
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    const comment = await Comment.findByPk(req.params.commentId);
+    const newComment = await comment.update(req.body);
+    res.json({ newComment, message: "edited" });
+  })
+);
+
+router.delete(
+  "/:commentId(\\d+)",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const comment = await Comment.findByPk(req.params.commentId);
+    comment.destroy();
+    res.json({ comment, message: "deleted" });
   })
 );
 
