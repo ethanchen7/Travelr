@@ -161,8 +161,8 @@ const imageReducer = (state = initialState, action) => {
       newState.imageObjects[action.favorite.imageId].favoriteCount =
         newFavoriteCount;
       return newState;
+
     case DELETE_FAVORITE:
-      console.log(action.favorite);
       const oldFavCount = parseInt(
         state.imageObjects[action.favorite.imageId].favoriteCount
       );
@@ -172,8 +172,6 @@ const imageReducer = (state = initialState, action) => {
       ].Favorites.findIndex(
         (favorite) => favorite.userId === action.favorite.userId
       );
-      console.log(state.imageObjects[action.favorite.Image.id]);
-      console.log(oldFavCount, newFavCount, favIdx);
       newState = {
         ...state,
         imageObjects: {
@@ -191,6 +189,7 @@ const imageReducer = (state = initialState, action) => {
         favIdx,
         1
       );
+      return newState;
     default:
       return state;
   }
