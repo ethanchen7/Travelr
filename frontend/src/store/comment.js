@@ -88,7 +88,12 @@ const commentReducer = (state = initialState, action) => {
         },
       };
     case DELETE_COMMENT:
-      const newState = { ...state };
+      const newState = {
+        ...state,
+        imageComments: {
+          ...state.imageComments,
+        },
+      };
       delete newState.imageComments[action.comment.id];
       return newState;
     case EDIT_COMMENT:
