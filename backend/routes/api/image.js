@@ -98,9 +98,9 @@ router.delete(
       },
       include: [{ model: Image }, { model: User }],
     });
-    console.log(favorite);
+    // console.log(favorite);
     await favorite.destroy();
-    res.status(24).json(favorite, userId);
+    res.send({ favorite, userId });
   })
 );
 
