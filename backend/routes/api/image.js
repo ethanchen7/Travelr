@@ -2,7 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 
 const { requireAuth, restoreUser } = require("../../utils/auth");
-const { Image, Favorite, User } = require("../../db/models");
+const { Image, Favorite, User, Comment } = require("../../db/models");
 const { singleMulterUpload, singlePublicFileUpload } = require("../awsS3");
 
 const router = express.Router();
@@ -13,14 +13,7 @@ router.get(
   restoreUser,
   asyncHandler(async (req, res) => {
     const images = await Image.findAll({
-      include: [
-        {
-          model: User,
-        },
-        {
-          model: Favorite,
-        },
-      ],
+      include: [{ model: User }, { model: Favorite }],
     });
     return res.json(images);
   })
@@ -33,7 +26,7 @@ router.get(
   restoreUser,
   asyncHandler(async (req, res) => {
     const image = await Image.findByPk(req.params.id, {
-      include: [{ model: User }, { model: Favorite }],
+      include: [{ model: User }, { model: Favorite }, { model: Comment }],
     });
     return res.json(image);
   })
