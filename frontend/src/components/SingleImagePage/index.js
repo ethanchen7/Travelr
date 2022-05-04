@@ -5,6 +5,7 @@ import { getSingleImage } from "../../store/image";
 import { getComments } from "../../store/comment";
 import CommentFormModal from "../CommentForm";
 import DeleteCommentModal from "../DeleteCommentModal";
+import EditCommentForm from "../EditCommentForm";
 import "./SingleImagePage.css";
 
 const SingleImagePage = () => {
@@ -59,7 +60,7 @@ const SingleImagePage = () => {
                     </div>
                     {comment.User.id === sessionUser.id ? (
                       <div className="comment-icons">
-                        <i className="fa-solid fa-pen-to-square"></i>
+                        <EditCommentForm comment={comment} />
                         <DeleteCommentModal comment={comment} />
                       </div>
                     ) : (

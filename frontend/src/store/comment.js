@@ -49,7 +49,13 @@ export const postComment = (payload) => async (dispatch) => {
 };
 
 export const putComment = (payload) => async (dispatch) => {
-  const res = await csrfFetch(`/api/comments/${payload.commentId}`);
+  const { userId, imageId, commentId, text } = payload;
+  const res = await csrfFetch(`/api/comments/${commentId}`, {
+    method: "PUT",
+    body: JSON.stringify({ userId, imageId, text }),
+  });
+  const comment = await res.json();
+  dispatch(editComment(comment.editedComment));
 };
 
 export const removeComment = (commentId) => async (dispatch) => {
@@ -85,6 +91,15 @@ const commentReducer = (state = initialState, action) => {
       const newState = { ...state };
       delete newState.imageComments[action.comment.id];
       return newState;
+    case EDIT_COMMENT:
+      return {
+        ...state,
+        imageComments: {
+          ...state.imageComments,
+          [action.comment.id]: action.comment,
+        },
+      };
+
     default:
       return state;
   }
