@@ -1,5 +1,6 @@
 import { csrfFetch } from "./csrf";
 const LOAD = "image/LOAD";
+const LOAD_SINGLE = "image/LOAD_SINGLE";
 const CREATE = "image/CREATE";
 const FAVORITE = "image/FAVORITE";
 const DELETE_FAVORITE = "image/DELETE_FAVORITE";
@@ -8,6 +9,13 @@ const loadImages = (images) => {
   return {
     type: LOAD,
     images,
+  };
+};
+
+const loadSingleImage = (image) => {
+  return {
+    type: LOAD_SINGLE,
+    image,
   };
 };
 
@@ -38,6 +46,12 @@ export const getImages = () => async (dispatch) => {
   const data = await res.json();
   dispatch(loadImages(data));
   return data;
+};
+
+export const getSingleImage = (imageId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/images/${imageId}`);
+  const image = await res.json();
+  dispatch(loadSingleImage(image));
 };
 
 export const uploadImage = (submission) => async (dispatch) => {
@@ -101,7 +115,14 @@ const imageReducer = (state = initialState, action) => {
       return {
         ...state,
         imageObjects,
-        // imageArray: Object.values(imageObjects),
+      };
+    case LOAD_SINGLE:
+      return {
+        ...state,
+        imageObjects: {
+          [action.image.id]: action.image,
+          ...state.imageObjects,
+        },
       };
     case CREATE:
       newState = {
@@ -148,6 +169,7 @@ const imageReducer = (state = initialState, action) => {
           //   Favorites: [...state[action.favorite.imageId].Favorites],
         },
       };
+      return newState;
     //   newState.imageObjects[action.favorite.imageId].Favorites.splice(1);
     default:
       return state;

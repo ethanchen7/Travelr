@@ -6,12 +6,6 @@ module.exports = {
       "Images",
       [
         {
-          userId: 3,
-          imageUrl: "/images/01egypt.jpeg",
-          favoriteCount: 100,
-          tags: ["egypt", "middle east"],
-        },
-        {
           userId: 2,
           imageUrl: "/images/04maldives.jpeg",
           favoriteCount: 36,

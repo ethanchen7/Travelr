@@ -6,8 +6,19 @@ import "./ExplorePage.css";
 
 const ExplorePage = () => {
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
   const imageObjects = useSelector((state) => state.images.imageObjects);
-  const images = Object.values(imageObjects).slice(0, 10);
+  const imageArray = Object.values(imageObjects).filter(
+    (image) => image.User.id !== sessionUser.id
+  );
+  // display random amount of images
+  const getRandom = (min, max) => {
+    return Math.random() * (max - min) + min;
+  };
+  const randomLow = Math.floor(getRandom(1, 9));
+  const randomHigh = Math.floor(getRandom(10, 20));
+  const images = imageArray.slice(randomLow, randomHigh);
+
   useEffect(() => {
     dispatch(getImages());
   }, [dispatch]);

@@ -9,6 +9,7 @@ import { restoreCSRF, csrfFetch } from "./store/csrf";
 import * as sessionActions from "./store/session";
 import * as imageActions from "./store/image";
 import * as profileActions from "./store/profile";
+import * as commentActions from "./store/comment";
 
 import ModalProvider from "./context/Modal";
 
@@ -22,6 +23,7 @@ if (process.env.NODE_ENV !== "production") {
   window.sessionActions = sessionActions;
   window.imageActions = imageActions;
   window.profileActions = profileActions;
+  window.commentActions = commentActions;
 }
 
 function Root() {
