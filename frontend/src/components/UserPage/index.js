@@ -5,6 +5,7 @@ import { loadImages, loadDetails } from "../../store/profile";
 import UserPageHeader from "../UserPageHeader";
 import UserPageNavBar from "../UserPageNavBar";
 import ImageCard from "../ImageCard";
+import UploadFormModal from "../UploadPage";
 import "./UserPage.css";
 
 const UserPage = () => {
@@ -35,11 +36,20 @@ const UserPage = () => {
         <UserPageHeader details={details} />
         <UserPageNavBar />
         <div className="user-page-body">
-          <div className="inner-container">
-            {imageObjects?.map((img) => (
-              <ImageCard key={img.id} image={img} />
-            ))}
-          </div>
+          {imageObjects.length ? (
+            <div className="inner-container">
+              {imageObjects?.map((img) => (
+                <ImageCard key={img.id} image={img} />
+              ))}
+            </div>
+          ) : (
+            <div className="empty-photo-container">
+              <img src="/images/travelrblack.png" />
+              <h1>Oops, looks like you don't have any photos yet.</h1>
+              <h3>Upload some of your memories!</h3>
+              <UploadFormModal option={"black"} />
+            </div>
+          )}
         </div>
       </div>
     );

@@ -35,10 +35,8 @@ export const loadImages = (userId) => async (dispatch) => {
 
 export const loadDetails = (userId) => async (dispatch) => {
   const res = await csrfFetch(`/api/profile/${userId}`);
-  if (res.ok) {
-    const details = await res.json();
-    dispatch(loadProfileDetails(details));
-  }
+  const details = await res.json();
+  dispatch(loadProfileDetails(details));
 };
 
 export const uploadImage = (submission) => async (dispatch) => {
@@ -82,6 +80,7 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         profileDetails: { ...action.details },
       };
+
     case CREATE:
       const newState = {
         ...state,

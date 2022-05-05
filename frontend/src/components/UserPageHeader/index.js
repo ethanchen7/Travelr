@@ -8,20 +8,38 @@ const UserPageHeader = ({ details }) => {
         <div className="user-information">
           <div className="user-profile">
             <div className="user-profile-icon-container">
-              <img src={`${details.profilePic}`} />
+              {details.profilePic ? (
+                <img src={`${details.profilePic}`} />
+              ) : (
+                <img className="default-pic" src="/images/defaultprofile.png" />
+              )}
             </div>
             <div className="user-profile-text-container">
-              <h3 className="user-profile-title">{details.fullName}</h3>
+              <h3 className="user-profile-title">
+                {details.fullName ? `${details.fullName}` : `New User`}
+              </h3>
               <p className="user-profile-username">{`@${details.User.username}`}</p>
             </div>
           </div>
           <div className="user-details">
-            <p>{`Occupation: ${details.occupation}`}</p>
-            <p>{`Location: ${details.location}`}</p>
-            <p>{`Favorite Destination: ${details.favoriteDestination}`}</p>
+            <p>
+              {details.occupation
+                ? `Occupation: ${details.occupation}`
+                : "Occupation: n/a"}
+            </p>
+            <p>
+              {details.location
+                ? `Location: ${details.location}`
+                : "Location: n/a"}
+            </p>
+            <p>
+              {details.favoriteDestination
+                ? `Favorite Destination: ${details.favoriteDestination}`
+                : "Favorite Destination: n/a"}
+            </p>
             <div className="bio-text">
               Bio:
-              <span>{`${details.bio}`}</span>
+              <span>{details.bio ? `${details.bio}` : "n/a"}</span>
             </div>
           </div>
         </div>

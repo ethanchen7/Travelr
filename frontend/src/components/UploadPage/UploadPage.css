@@ -11,3 +11,15 @@
   justify-content: center;
   align-items: center;
 }
+
+.no-back {
+  margin-top: 50px;
+  background-color: rgb(238, 238, 238);
+  border: none;
+}
+
+.black {
+  color: black;
+  background-color: rgb(238, 238, 238);
+  font-size: 100px;
+}

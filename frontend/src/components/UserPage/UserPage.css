@@ -8,3 +8,11 @@
 .user-page-body {
   margin: 60px;
 }
+
+.empty-photo-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
