@@ -44,8 +44,10 @@ router.post(
       imageUrl,
       tags: tags.split(","),
     });
-    // const createdImage = await Image.findByPk(newImage.id);
-    res.json(newImage);
+    const createdImage = await Image.findByPk(newImage.id, {
+      include: [{ model: User }],
+    });
+    res.json(createdImage);
   })
 );
 

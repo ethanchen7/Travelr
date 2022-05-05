@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 const LOAD = "image/LOAD";
 const LOAD_SINGLE = "image/LOAD_SINGLE";
-const CREATE = "image/CREATE";
+
 const FAVORITE = "image/FAVORITE";
 const DELETE_FAVORITE = "image/DELETE_FAVORITE";
 
@@ -15,13 +15,6 @@ const loadImages = (images) => {
 const loadSingleImage = (image) => {
   return {
     type: LOAD_SINGLE,
-    image,
-  };
-};
-
-const createImage = (image) => {
-  return {
-    type: CREATE,
     image,
   };
 };
@@ -53,29 +46,6 @@ export const getSingleImage = (imageId) => async (dispatch) => {
   const res = await csrfFetch(`/api/images/${imageId}`);
   const image = await res.json();
   dispatch(loadSingleImage(image));
-};
-
-export const uploadImage = (submission) => async (dispatch) => {
-  const { userId, tags, image } = submission;
-  const formData = new FormData();
-  formData.append("userId", userId);
-  if (tags) formData.append("tags", tags);
-  if (image) formData.append("image", image);
-  const res = await csrfFetch(`/api/images`, {
-    method: "POST",
-    body: formData,
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
-  if (res.ok) {
-    const image = await res.json();
-    dispatch(createImage(image));
-    return image;
-  } else {
-    const errors = await res.json();
-    console.log(errors);
-  }
 };
 
 export const createFavorite = (payload) => async (dispatch) => {
@@ -126,16 +96,7 @@ const imageReducer = (state = initialState, action) => {
           ...state.imageObjects,
         },
       };
-    case CREATE:
-      newState = {
-        ...state,
-        [action.image.id]: action.image,
-        imageObjects: {
-          [action.image.id]: action.image,
-          ...state.imageObjects,
-        },
-      };
-      return newState;
+
     case FAVORITE:
       const oldFavoriteCount = parseInt(
         state.imageObjects[action.favorite.imageId].favoriteCount

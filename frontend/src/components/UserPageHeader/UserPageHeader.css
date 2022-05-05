@@ -81,3 +81,15 @@
 .user-details > p {
   line-height: 3px;
 }
+
+.bio-text {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+}
+
+.bio-text > span {
+  font-style: italic;
+  font-size: 14px;
+  margin-left: 10px;
+}

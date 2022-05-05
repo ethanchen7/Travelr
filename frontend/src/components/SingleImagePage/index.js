@@ -37,16 +37,24 @@ const SingleImagePage = () => {
         <div className="image-information-container">
           <div className="image-details">
             <div className="profile-container">
-              <div className="profile-picture">
-                <img src={`${image.imageUrl}`} alt="profilepic"></img>
+              <div className="profile-inner-container">
+                <div className="profile-picture">
+                  <img src={`${image.imageUrl}`} alt="profilepic"></img>
+                </div>
+                <div className="profile-details">
+                  <NavLink
+                    to={`/users/${image.User.id}`}
+                  >{`@${image.User.username}`}</NavLink>
+                  <p>{`${image.tags[0].toUpperCase()}`}</p>
+                </div>
               </div>
-              <div className="profile-details">
-                <NavLink
-                  to={`/users/${image.User.id}`}
-                >{`@${image.User.username}`}</NavLink>
-                <p>{`${image.tags[0].toUpperCase()}`}</p>
+              <div className="picture-tags">
+                {image.tags.map((tag) => (
+                  <button>{`${tag.toUpperCase()}`}</button>
+                ))}
               </div>
             </div>
+
             <div className="engagement-container">
               <div className="favorite-details">
                 <FavoriteButton image={image} small={true} />

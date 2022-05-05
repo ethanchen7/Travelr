@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
 import { Redirect } from "react-router-dom";
+import DemoUserButton from "../DemoUserButton";
 import "./LoginForm.css";
 import { NavLink } from "react-router-dom";
 
@@ -71,7 +72,7 @@ const LoginForm = () => {
         </button>
       </form>
       {/* make this into a component */}
-      <button className="demo-user-btn">Demo User</button>
+      <DemoUserButton />
       <div className="line-break"></div>
       {/* <div className="sign-up-link">
         <span>Not a Travelr member? </span>

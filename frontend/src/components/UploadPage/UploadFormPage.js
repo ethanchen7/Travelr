@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import * as imageActions from "../../store/image";
+import { uploadImage } from "../../store/profile";
 import "../LoginFormModal/LoginForm.css";
 
 const UploadPage = ({ setShowModal }) => {
@@ -26,8 +26,7 @@ const UploadPage = ({ setShowModal }) => {
       tags: tagsArray,
     };
 
-    dispatch(imageActions.uploadImage(data));
-    history.push("/");
+    dispatch(uploadImage(data));
     setShowModal(false);
   };
 
