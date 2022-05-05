@@ -6,6 +6,9 @@
   display: flex;
   justify-content: center;
 }
+.image-container > img:hover {
+  cursor: zoom-in;
+}
 
 .image-container > i {
   position: absolute;

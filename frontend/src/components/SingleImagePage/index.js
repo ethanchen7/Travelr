@@ -3,30 +3,33 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, NavLink } from "react-router-dom";
 import { getSingleImage } from "../../store/image";
 import { getComments } from "../../store/comment";
-import { loadImages, loadDetails } from "../../store/profile";
+// import { loadImages, loadDetails } from "../../store/profile";
+import { Modal } from "../../context/Modal";
 import CommentFormModal from "../CommentForm";
 import DeleteCommentModal from "../DeleteCommentModal";
 import EditCommentForm from "../EditCommentForm";
 import FavoriteButton from "../FavoriteButton";
 import "./SingleImagePage.css";
 import EditImageModal from "../EditImageForm";
+import SingleImageZoom from "../SingleImageZoom";
 
 const SingleImagePage = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const { id } = useParams();
   const imageId = parseInt(id);
   const sessionUser = useSelector((state) => state.session.user);
   const image = useSelector((state) => state.images?.imageObjects)[imageId];
   const commentObjects = useSelector((state) => state.comment.imageComments);
   const comments = Object.values(commentObjects);
-  const profile = useSelector((state) => state.profile.profileImages);
+  // const profile = useSelector((state) => state.profile.profileImages);
 
   useEffect(() => {
     dispatch(getSingleImage(imageId))
       .then(() => dispatch(getComments(imageId)))
       .then(() => setIsLoaded(true));
-  }, []);
+  }, [dispatch, imageId]);
 
   if (!isLoaded) {
     return null;
@@ -42,7 +45,18 @@ const SingleImagePage = () => {
           ) : (
             ""
           )}
-          {image && <img src={image.imageUrl} alt="display-img"></img>}
+          {image && (
+            <img
+              src={image.imageUrl}
+              alt="display-img"
+              onClick={() => setShowModal(true)}
+            ></img>
+          )}
+          {showModal && (
+            <Modal onClose={() => setShowModal(false)}>
+              <SingleImageZoom image={image} />
+            </Modal>
+          )}
         </div>
         <div className="image-information-container">
           <div className="image-details">

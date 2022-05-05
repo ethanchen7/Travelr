@@ -1,0 +1,24 @@
+.image-zoom-container {
+  width: fit-content;
+  height: fit-content;
+}
+
+.image-footer-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-footer-container > span {
+  color: rgb(235, 235, 235);
+  font-style: italic;
+  font-size: 14px;
+  margin-left: 13px;
+  margin-right: 13px;
+}
