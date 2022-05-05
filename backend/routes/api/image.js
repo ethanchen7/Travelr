@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 
 const { requireAuth, restoreUser } = require("../../utils/auth");
 const { Image, Favorite, User, Comment, Profile } = require("../../db/models");
-const { singleMulterUpload, singlePublicFileUpload } = require("../awsS3");
+const { singleMulterUpload, singlePublicFileUpload } = require("../awsS3.js");
 
 const router = express.Router();
 
