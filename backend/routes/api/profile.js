@@ -4,6 +4,7 @@ const asyncHandler = require("express-async-handler");
 const { validateProfile } = require("../../utils/validation");
 const { requireAuth, restoreUser } = require("../../utils/auth");
 const { Image, Profile, User, Favorite } = require("../../db/models");
+const { singlePublicFileUpload, singleMulterUpload } = require("../../awsS3");
 
 const router = express.Router();
 
@@ -44,18 +45,40 @@ router.put(
   "/:userId(\\d+)",
   requireAuth,
   validateProfile,
+  singleMulterUpload("image"),
   asyncHandler(async (req, res) => {
     const userId = req.params.userId;
-    const profile = await Profile.findOne({
-      where: {
-        userId,
-      },
-    });
-    if (profile) {
-      await profile.update(req.body);
-      await profile.save();
-      res.json(profile);
+    const {
+      fullName,
+      profilePic,
+      location,
+      favoriteDestination,
+      occupation,
+      bio,
+    } = req.body;
+
+    let editedPic;
+    if (!profilePic) {
+      editedPic = await singlePublicFileUpload(req.file);
+    } else {
+      editedPic = profilePic;
     }
+
+    const profile = await Profile.findByPk(userId);
+
+    await profile.update({
+      fullName,
+      profilePic: editedPic,
+      occupation,
+      location,
+      favoriteDestination,
+      bio,
+    });
+
+    const editedProfile = await Profile.findByPk(userId, {
+      include: [{ model: User }],
+    });
+    res.json(editedProfile);
   })
 );
 
