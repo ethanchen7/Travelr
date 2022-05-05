@@ -90,14 +90,23 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Favorite, {
       foreignKey: "userId",
       onDelete: "CASCADE",
+      hooks: true,
     });
-    User.hasMany(models.Image, { foreignKey: "userId", onDelete: "CASCADE" });
+    User.hasMany(models.Image, {
+      foreignKey: "userId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
     User.belongsToMany(models.Image, {
       foreignKey: "userId",
       through: "Favorite",
       otherKey: "imageId",
     });
-    User.hasMany(models.Comment, { foreignKey: "userId", onDelete: "CASCADE" });
+    User.hasMany(models.Comment, {
+      foreignKey: "userId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
   };
   return User;
 };

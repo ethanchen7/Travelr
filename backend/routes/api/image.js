@@ -86,7 +86,7 @@ router.delete(
     const imageId = req.params.id;
     const image = await Image.findByPk(imageId);
     await image.destroy();
-    return res.status(204);
+    return res.json(image);
   })
 );
 
