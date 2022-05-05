@@ -19,12 +19,7 @@ router.get(
       },
       include: [{ model: User }],
     });
-    if (profile) {
-      res.status(200);
-      res.json(profile);
-    } else {
-      return res.status(404);
-    }
+    res.json(profile);
   })
 );
 
