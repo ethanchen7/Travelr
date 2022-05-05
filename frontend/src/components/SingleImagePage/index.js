@@ -3,12 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, NavLink } from "react-router-dom";
 import { getSingleImage } from "../../store/image";
 import { getComments } from "../../store/comment";
-import { loadDetails } from "../../store/profile";
+import { loadImages, loadDetails } from "../../store/profile";
 import CommentFormModal from "../CommentForm";
 import DeleteCommentModal from "../DeleteCommentModal";
 import EditCommentForm from "../EditCommentForm";
 import FavoriteButton from "../FavoriteButton";
 import "./SingleImagePage.css";
+import EditImageModal from "../EditImageForm";
 
 const SingleImagePage = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const SingleImagePage = () => {
   const image = useSelector((state) => state.images?.imageObjects)[imageId];
   const commentObjects = useSelector((state) => state.comment.imageComments);
   const comments = Object.values(commentObjects);
+  const profile = useSelector((state) => state.profile.profileImages);
 
   useEffect(() => {
     dispatch(getSingleImage(imageId))
@@ -32,6 +34,14 @@ const SingleImagePage = () => {
     return (
       <div className="single-image-body-container">
         <div className="image-container">
+          {image.User.id === sessionUser.id ? (
+            <>
+              <EditImageModal image={image} />
+              <DeleteCommentModal image={image} />
+            </>
+          ) : (
+            ""
+          )}
           {image && <img src={image.imageUrl} alt="display-img"></img>}
         </div>
         <div className="image-information-container">
@@ -50,7 +60,7 @@ const SingleImagePage = () => {
               </div>
               <div className="picture-tags">
                 {image.tags.map((tag) => (
-                  <button>{`${tag.toUpperCase()}`}</button>
+                  <button key={`${tag}`}>{`${tag.toUpperCase()}`}</button>
                 ))}
               </div>
             </div>

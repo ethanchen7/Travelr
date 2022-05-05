@@ -6,6 +6,7 @@ import SignUpFormModal from "../SignUpFormModal";
 import UploadFormModal from "../UploadPage";
 import "./Navigation.css";
 import LogoutButton from "./LogoutButton";
+import SearchForm from "../SearchBar";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -24,10 +25,7 @@ function Navigation({ isLoaded }) {
     );
     sessionLinks = (
       <>
-        {/* search bar component */}
-        <NavLink exact to="/">
-          Search
-        </NavLink>
+        <SearchForm />
 
         <UploadFormModal />
 

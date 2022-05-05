@@ -1,28 +1,24 @@
 import { useState } from "react";
-import DeleteConfirmation from "./DeleteConfirmation";
+import EditImageForm from "./EditImageForm";
 import { Modal } from "../../context/Modal";
 import "./index.css";
 
-const DeleteCommentModal = ({ comment, image }) => {
+const EditImageModal = ({ image }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <i
-        className="fa-solid fa-trash-can"
+        className="fa-solid fa-pen-to-square"
         onClick={() => setShowModal(true)}
       ></i>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <DeleteConfirmation
-            setShowModal={setShowModal}
-            comment={comment}
-            image={image}
-          />
+          <EditImageForm image={image} setShowModal={setShowModal} />
         </Modal>
       )}
     </>
   );
 };
 
-export default DeleteCommentModal;
+export default EditImageModal;

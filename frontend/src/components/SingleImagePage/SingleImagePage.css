@@ -7,6 +7,26 @@
   justify-content: center;
 }
 
+.image-container > i {
+  position: absolute;
+  font-size: 22px;
+  color: gray;
+}
+
+.image-container > i:nth-child(1) {
+  top: 10px;
+  right: 20px;
+}
+
+.image-container > i:nth-child(2) {
+  top: 40px;
+  right: 23px;
+}
+
+.image-container > i:hover {
+  color: rgb(192, 192, 192);
+}
+
 .image-container {
   height: 800px;
   width: 100%;
