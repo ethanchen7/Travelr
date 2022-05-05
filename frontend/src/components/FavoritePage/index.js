@@ -16,22 +16,38 @@ const FavoritePage = () => {
     dispatch(loadFavoriteImages(sessionUser.id));
     dispatch(getImages);
     setIsLoaded(true);
-  }, [dispatch]);
+  }, [dispatch, sessionUser.id]);
 
   if (!isLoaded) {
     return null;
   } else {
-    return (
-      <div className="body-container">
-        <div className="inner-container">
-          {favorites?.map((fav) => {
-            return (
-              <ImageCard key={fav.id} image={fav.Image} explorePage={false} />
-            );
-          })}
+    if (favorites.length) {
+      return (
+        <div className="body-container">
+          <div className="inner-container">
+            {favorites.map((fav) => {
+              return (
+                <ImageCard
+                  key={`${fav.Image.id}`}
+                  image={fav.Image}
+                  explorePage={false}
+                />
+              );
+            })}
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="no-favorites-container">
+          <>
+            <img src="/images/travelrblack.png" alt="logo" />
+            <h1>Oops, looks like you don't have any favorites yet.</h1>
+            <h3>Explore and add some favorites!</h3>
+          </>
+        </div>
+      );
+    }
   }
 };
 
