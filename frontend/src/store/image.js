@@ -49,7 +49,8 @@ export const getSingleImage = (imageId) => async (dispatch) => {
 };
 
 export const createFavorite = (payload) => async (dispatch) => {
-  const { imageId, userId, imageUrl, favoriteCount, tags } = payload;
+  const { imageId, userId, imageUrl, favoriteCount, tags, imageUserId } =
+    payload;
   const res = await csrfFetch(`/api/images/${imageId}/favorite`, {
     method: "POST",
     body: JSON.stringify({ userId, imageId }),
@@ -58,7 +59,13 @@ export const createFavorite = (payload) => async (dispatch) => {
 
   const updateRes = await csrfFetch(`/api/images/${imageId}/favorite`, {
     method: "PUT",
-    body: JSON.stringify({ imageId, userId, imageUrl, favoriteCount, tags }),
+    body: JSON.stringify({
+      imageId,
+      userId: imageUserId,
+      imageUrl,
+      favoriteCount,
+      tags,
+    }),
   });
 
   dispatch(favoriteImage(favorite));

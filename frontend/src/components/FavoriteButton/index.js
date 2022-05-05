@@ -12,7 +12,7 @@ const FavoriteButton = ({ image, small }) => {
   const [favorited, setFavorited] = useState(isFavorited.length > 0);
   const imageId = image.id;
   const userId = sessionUser.id;
-  // NEED TO NOT RENDER THIS IN THE PRFOILE PAGE DUMMASS
+
   const handleFavoriteClick = () => {
     let currentFavCount = image.favoriteCount;
     currentFavCount += 1;
@@ -20,6 +20,7 @@ const FavoriteButton = ({ image, small }) => {
     dispatch(
       createFavorite({
         imageId,
+        imageUserId: image.User.id,
         userId,
         imageUrl: image.imageUrl,
         favoriteCount: currentFavCount,
