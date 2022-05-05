@@ -1,14 +1,22 @@
 import { useState } from "react";
 import "./UserPageNavBar.css";
 
-const UserPageNavBar = () => {
-  const [photoStream, setPhotoStream] = useState(true);
-  const [favorites, setFavorites] = useState(false);
+const UserPageNavBar = ({ setPhotoStreamToggle }) => {
   return (
     <div className="user-page-nav-bar-container">
       <div className="user-page-nav-bar">
-        <div className="photostream-option">Photostream</div>
-        <div className="favorites-option">Favorites</div>
+        <div
+          className="photostream-option toggle"
+          onClick={() => setPhotoStreamToggle(true)}
+        >
+          Photostream
+        </div>
+        <div
+          className="favorites-option toggle"
+          onClick={() => setPhotoStreamToggle(false)}
+        >
+          Favorites
+        </div>
       </div>
     </div>
   );
