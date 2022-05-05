@@ -28,6 +28,17 @@ li {
   font-size: 14px;
 }
 
+button {
+  background-color: #75c365d2;
+  border: 1px solid #75c365c9;
+}
+
+button .disabled {
+  background-color: #dafbd3d2;
+  border: 1px solid #dafbd3d2;
+  color: rgb(132, 132, 132);
+}
+
 button:hover,
 a:hover {
   cursor: pointer;

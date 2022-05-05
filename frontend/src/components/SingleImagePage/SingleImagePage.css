@@ -33,11 +33,16 @@
 .profile-container {
   margin-top: 20px;
   width: 30%;
-  height: 100px;
+  height: 300px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+}
+
+.profile-inner-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .profile-picture {
@@ -59,6 +64,24 @@
 .profile-details > a:visited {
   color: #006dac;
 }
+
+.picture-tags {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.picture-tags > button {
+  border-radius: 25px;
+  width: 80px;
+  height: 35px;
+  margin-left: 5px;
+  background-color: rgb(188, 187, 187);
+  color: white;
+  border: 1px solid rgb(188, 187, 187);
+}
+
 .engagement-container {
   width: 40%;
 

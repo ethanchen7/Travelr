@@ -1,7 +1,6 @@
 import "./UserPageHeader.css";
 
 const UserPageHeader = ({ details }) => {
-  console.log(details);
   return (
     <div className="user-page-header-container">
       <div className="user-page-cover-photo">
@@ -20,7 +19,10 @@ const UserPageHeader = ({ details }) => {
             <p>{`Occupation: ${details.occupation}`}</p>
             <p>{`Location: ${details.location}`}</p>
             <p>{`Favorite Destination: ${details.favoriteDestination}`}</p>
-            <div>{`Bio: ${details.bio}`}</div>
+            <div className="bio-text">
+              Bio:
+              <span>{`${details.bio}`}</span>
+            </div>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_PROFILE_IMAGES = "profile/LOAD_PROFILE_IMAGES";
 const LOAD_PROFILE_DETAILS = "profile/LOAD_PROFILE_DETAILS";
+const CREATE = "image/CREATE";
 
 const loadProfileImages = (images) => {
   return {
@@ -14,6 +15,13 @@ const loadProfileDetails = (details) => {
   return {
     type: LOAD_PROFILE_DETAILS,
     details,
+  };
+};
+
+const createImage = (image) => {
+  return {
+    type: CREATE,
+    image,
   };
 };
 
@@ -30,6 +38,29 @@ export const loadDetails = (userId) => async (dispatch) => {
   if (res.ok) {
     const details = await res.json();
     dispatch(loadProfileDetails(details));
+  }
+};
+
+export const uploadImage = (submission) => async (dispatch) => {
+  const { userId, tags, image } = submission;
+  const formData = new FormData();
+  formData.append("userId", userId);
+  if (tags) formData.append("tags", tags);
+  if (image) formData.append("image", image);
+  const res = await csrfFetch(`/api/images`, {
+    method: "POST",
+    body: formData,
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  if (res.ok) {
+    const image = await res.json();
+    dispatch(createImage(image));
+    return image;
+  } else {
+    const errors = await res.json();
+    console.log(errors);
   }
 };
 
@@ -51,6 +82,15 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         profileDetails: { ...action.details },
       };
+    case CREATE:
+      const newState = {
+        ...state,
+        profileImages: {
+          ...state.profileImages,
+          [action.image.id]: action.image,
+        },
+      };
+      return newState;
     default:
       return state;
   }
