@@ -34,10 +34,10 @@ const editImage = (image) => {
   };
 };
 
-const deleteImage = (imageId) => {
+const deleteImage = (image) => {
   return {
     type: DELETE_IMAGE,
-    imageId,
+    image,
   };
 };
 
@@ -92,7 +92,8 @@ export const removeImage = (imageId) => async (dispatch) => {
   const res = await csrfFetch(`/api/images/${imageId}`, {
     method: "DELETE",
   });
-  dispatch(deleteImage(imageId));
+  const image = await res.json();
+  dispatch(deleteImage(image));
 };
 
 const initialState = { profileImages: {}, profileDetails: {} };
@@ -138,7 +139,8 @@ const profileReducer = (state = initialState, action) => {
           ...state.profileImages,
         },
       };
-      delete updatedState.profileImages[action.imageId];
+      console.log(action.image.id);
+      delete updatedState.profileImages[action.image.id];
       return updatedState;
     default:
       return state;
