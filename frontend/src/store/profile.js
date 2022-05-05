@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const LOAD_PROFILE_IMAGES = "profile/LOAD_PROFILE_IMAGES";
 const LOAD_PROFILE_DETAILS = "profile/LOAD_PROFILE_DETAILS";
 const LOAD_PROFILE_FAVORITED = "profile/LOAD_PROFILE_FAVORITED";
+const EDIT_PROFILE_DETAILS = "profile/EDIT_PROFILE_DETAILS";
 
 const CREATE = "image/CREATE";
 const EDIT_IMAGE = "image/EDIT_IMAGE";
@@ -26,6 +27,13 @@ const loadProfileFavorited = (images) => {
   return {
     type: LOAD_PROFILE_FAVORITED,
     images,
+  };
+};
+
+const editProfileDetails = (details) => {
+  return {
+    type: EDIT_PROFILE_DETAILS,
+    details,
   };
 };
 
@@ -62,6 +70,39 @@ export const loadDetails = (userId) => async (dispatch) => {
   const res = await csrfFetch(`/api/profile/${userId}`);
   const details = await res.json();
   dispatch(loadProfileDetails(details));
+};
+
+export const putProfileDetails = (payload) => async (dispatch) => {
+  const {
+    userId,
+    fullName,
+    image,
+    profilePic,
+    location,
+    favoriteDestination,
+    occupation,
+    bio,
+  } = payload;
+
+  const formData = new FormData();
+  if (fullName) formData.append("fullName", fullName);
+  if (profilePic) formData.append("profilePic", profilePic);
+  if (location) formData.append("location", location);
+  if (favoriteDestination)
+    formData.append("favoriteDestination", favoriteDestination);
+  if (occupation) formData.append("occupation", occupation);
+  if (bio) formData.append("bio", bio);
+  if (image) formData.append("image", image);
+
+  const res = await csrfFetch(`/api/profile/${userId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
+  });
+  const editedProfile = await res.json();
+  dispatch(editProfileDetails(editedProfile));
 };
 
 export const loadFavoriteImages = (userId) => async (dispatch) => {
@@ -138,6 +179,11 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         favoriteImages: { ...action.images },
       };
+    case EDIT_PROFILE_DETAILS:
+      return {
+        ...state,
+        profileDetails: action.details,
+      };
 
     case CREATE:
       const newState = {
@@ -163,7 +209,6 @@ const profileReducer = (state = initialState, action) => {
           ...state.profileImages,
         },
       };
-      console.log(action.image.id);
       delete updatedState.profileImages[action.image.id];
       return updatedState;
     default:

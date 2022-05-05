@@ -6,7 +6,11 @@ const UserPageFavorites = ({ favorites, sessionUser, userPageId }) => {
       {favorites.length ? (
         <div className="inner-container">
           {favorites?.map((fav) => (
-            <ImageCard key={fav.id} image={fav.Image} explorePage={false} />
+            <ImageCard
+              key={`${fav.Image.id}`}
+              image={fav.Image}
+              explorePage={false}
+            />
           ))}
         </div>
       ) : (

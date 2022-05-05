@@ -94,7 +94,8 @@
 
 .picture-tags > button {
   border-radius: 25px;
-  width: 80px;
+  display: inline-block;
+  text-align: center;
   height: 35px;
   margin-left: 5px;
   background-color: rgb(188, 187, 187);

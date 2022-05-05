@@ -1,9 +1,11 @@
+import EditBioModal from "../UserPageEditBioModal";
 import "./UserPageHeader.css";
 
 const UserPageHeader = ({ details }) => {
   return (
     <div className="user-page-header-container">
       <div className="user-page-cover-photo">
+        <EditBioModal details={details} />
         <img src="/images/background-1.jpeg" />
         <div className="user-information">
           <div className="user-profile">
