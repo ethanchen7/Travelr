@@ -2,6 +2,8 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_PROFILE_IMAGES = "profile/LOAD_PROFILE_IMAGES";
 const LOAD_PROFILE_DETAILS = "profile/LOAD_PROFILE_DETAILS";
+const LOAD_PROFILE_FAVORITED = "profile/LOAD_PROFILE_FAVORITED";
+
 const CREATE = "image/CREATE";
 const EDIT_IMAGE = "image/EDIT_IMAGE";
 const DELETE_IMAGE = "image/DELETE_IMAGE";
@@ -17,6 +19,13 @@ const loadProfileDetails = (details) => {
   return {
     type: LOAD_PROFILE_DETAILS,
     details,
+  };
+};
+
+const loadProfileFavorited = (images) => {
+  return {
+    type: LOAD_PROFILE_FAVORITED,
+    images,
   };
 };
 
@@ -53,6 +62,12 @@ export const loadDetails = (userId) => async (dispatch) => {
   const res = await csrfFetch(`/api/profile/${userId}`);
   const details = await res.json();
   dispatch(loadProfileDetails(details));
+};
+
+export const loadFavoriteImages = (userId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/favorites/users/${userId}`);
+  const favorites = await res.json();
+  dispatch(loadProfileFavorited(favorites));
 };
 
 export const uploadImage = (submission) => async (dispatch) => {
@@ -96,7 +111,11 @@ export const removeImage = (imageId) => async (dispatch) => {
   dispatch(deleteImage(image));
 };
 
-const initialState = { profileImages: {}, profileDetails: {} };
+const initialState = {
+  profileImages: {},
+  profileDetails: {},
+  favoriteImages: {},
+};
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -113,6 +132,11 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         profileDetails: { ...action.details },
+      };
+    case LOAD_PROFILE_FAVORITED:
+      return {
+        ...state,
+        favoriteImages: { ...action.images },
       };
 
     case CREATE:

@@ -6,6 +6,7 @@ import * as sessionActions from "./store/session";
 import HomePage from "./components/HomePage";
 import UserPage from "./components/UserPage";
 import SingleImagePage from "./components/SingleImagePage";
+import FavoritePage from "./components/FavoritePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/image/:id">
             <SingleImagePage />
+          </Route>
+          <Route path="/favorites">
+            <FavoritePage />
           </Route>
         </Switch>
       )}
