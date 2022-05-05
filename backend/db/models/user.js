@@ -86,15 +86,18 @@ module.exports = (sequelize, DataTypes) => {
     return await User.scope("currentUser").findByPk(user.id);
   };
   User.associate = function (models) {
-    User.hasOne(models.Profile, { foreignKey: "userId" });
-    User.hasMany(models.Favorite, { foreignKey: "userId" });
-    User.hasMany(models.Image, { foreignKey: "userId" });
+    User.hasOne(models.Profile, { foreignKey: "userId", onDelete: "CASCADE" });
+    User.hasMany(models.Favorite, {
+      foreignKey: "userId",
+      onDelete: "CASCADE",
+    });
+    User.hasMany(models.Image, { foreignKey: "userId", onDelete: "CASCADE" });
     User.belongsToMany(models.Image, {
       foreignKey: "userId",
       through: "Favorite",
       otherKey: "imageId",
     });
-    User.hasMany(models.Comment, { foreignKey: "userId" });
+    User.hasMany(models.Comment, { foreignKey: "userId", onDelete: "CASCADE" });
   };
   return User;
 };

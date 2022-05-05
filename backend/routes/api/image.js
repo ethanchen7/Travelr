@@ -54,6 +54,31 @@ router.post(
   })
 );
 
+router.put(
+  "/:id(\\d+)",
+  requireAuth,
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    const { userId, imageUrl, tags } = req.body;
+    const image = await Image.update(
+      {
+        userId,
+        imageUrl,
+        tags: tags.split(","),
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    const updatedImage = await Image.findByPk(req.params.id, {
+      include: [{ model: User }],
+    });
+    res.json(updatedImage);
+  })
+);
+
 router.delete(
   "/:id(\\d+)",
   requireAuth,

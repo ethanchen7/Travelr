@@ -29,8 +29,14 @@ module.exports = (sequelize, DataTypes) => {
       through: "Favorite",
       otherKey: "userId",
     });
-    Image.hasMany(models.Favorite, { foreignKey: "imageId" });
-    Image.hasMany(models.Comment, { foreignKey: "imageId" });
+    Image.hasMany(models.Favorite, {
+      foreignKey: "imageId",
+      onDelete: "CASCADE",
+    });
+    Image.hasMany(models.Comment, {
+      foreignKey: "imageId",
+      onDelete: "CASCADE",
+    });
   };
   return Image;
 };
