@@ -9,14 +9,14 @@ const router = express.Router();
 
 // get all the favorites for the current user
 router.get(
-  "/",
+  "/users/:userId(\\d+)",
   requireAuth,
   restoreUser,
   asyncHandler(async (req, res) => {
-    const { currentUserId } = req.body;
+    const userId = req.params.userId;
     const favorites = await Favorite.findAll({
       where: {
-        userId: currentUserId,
+        userId,
       },
       include: [
         {
@@ -24,6 +24,7 @@ router.get(
         },
         {
           model: Image,
+          include: [{ model: Favorite }, { model: User }],
         },
       ],
     });

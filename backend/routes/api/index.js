@@ -4,6 +4,7 @@ const usersRouter = require("./users.js");
 const imagesRouter = require("./image");
 const profileRouter = require("./profile");
 const commentRouter = require("./comment");
+const favoriteRouter = require("./favorite");
 
 router.use("/session", sessionRouter);
 
@@ -14,6 +15,8 @@ router.use("/images", imagesRouter);
 router.use("/profile", profileRouter);
 
 router.use("/comments", commentRouter);
+
+router.use("/favorites", favoriteRouter);
 
 router.post("/test", (req, res) => {
   res.json({ requestBody: req.body });
