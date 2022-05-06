@@ -24,6 +24,12 @@
   font-size: 18px;
 }
 
+.errors-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .form-container {
   display: flex;
   flex-direction: column;

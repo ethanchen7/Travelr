@@ -101,6 +101,7 @@ export const putProfileDetails = (payload) => async (dispatch) => {
     },
     body: formData,
   });
+
   const editedProfile = await res.json();
   dispatch(editProfileDetails(editedProfile));
 };

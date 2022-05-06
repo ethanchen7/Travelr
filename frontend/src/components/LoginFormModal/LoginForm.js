@@ -71,15 +71,8 @@ const LoginForm = () => {
           Log In
         </button>
       </form>
-      {/* make this into a component */}
       <DemoUserButton />
       <div className="line-break"></div>
-      {/* <div className="sign-up-link">
-        <span>Not a Travelr member? </span>
-        <span>
-          <NavLink>Sign up here.</NavLink>
-        </span>
-      </div> */}
     </div>
   );
 };

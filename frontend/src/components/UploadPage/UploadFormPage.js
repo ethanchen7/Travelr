@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadImage } from "../../store/profile";
@@ -14,26 +14,38 @@ const UploadPage = ({ setShowModal }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let errors = [];
+
     let tagsArray;
     if (tags.length) {
       tagsArray = tags.split(",");
       tagsArray = tagsArray.map((tag) => tag.replace(/\s+/g, ""));
     }
-    const data = {
-      userId: session.id,
-      image,
-      tags: tagsArray,
-    };
 
-    dispatch(uploadImage(data));
-    setShowModal(false);
+    if (!validationErrors.length) {
+      const data = {
+        userId: session.id,
+        image,
+        tags: tagsArray,
+      };
+      setValidationErrors([]);
+      dispatch(uploadImage(data));
+      setShowModal(false);
+    }
   };
 
   const uploadFile = (e) => {
     const file = e.target.files[0];
     if (file) setImage(file);
   };
+
+  useEffect(() => {
+    const errors = [];
+
+    if (!image) errors.push("Please upload an image!");
+    if (!tags) errors.push("Please enter at least one tag.");
+
+    setValidationErrors(errors);
+  }, [image, tags]);
 
   return (
     <div className="container">
@@ -65,7 +77,7 @@ const UploadPage = ({ setShowModal }) => {
             type="text"
             name="tags"
             value={tags}
-            placeholder='Add tags! e.g. "paris, france, europe" (optional)'
+            placeholder='Add tags! e.g. "paris, france, europe" (minimum 1)'
             onChange={(e) => setTags(e.target.value)}
           />
         </div>

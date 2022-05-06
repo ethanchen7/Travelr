@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { putProfileDetails } from "../../store/profile";
@@ -45,6 +45,28 @@ const EditBioForm = ({ setShowModal, details }) => {
     const file = e.target.files[0];
     if (file) setImage(file);
   };
+
+  useEffect(() => {
+    const errors = [];
+    if (fullName.length > 150)
+      errors.push(
+        "Please abbreviate your name to 150 characters or less, sorry!"
+      );
+    if (location.length > 140)
+      errors.push("Location can't be greater than 200 characters.");
+    if (favoriteDestination.length > 200)
+      errors.push("Favorite Destination can't be greater than 200 characters.");
+    if (occupation.length > 100)
+      errors.push(
+        "Occupation is a bit lengthy, could you please abbreviate it to 100 characters or less?"
+      );
+    if (bio.length > 500)
+      errors.push(
+        "We'd love to hear more about you, but we have to keep the bio at 500 characters or less for now. Sorry!"
+      );
+
+    setValidationErrors(errors);
+  }, [fullName, location, favoriteDestination, occupation, bio]);
 
   return (
     <div className="container">
