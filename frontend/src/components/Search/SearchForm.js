@@ -11,7 +11,7 @@ const SearchForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(getSearchResults(searchInput));
+    dispatch(getSearchResults(searchInput.toLowerCase()));
 
     history.push(`/search/${searchInput}`);
     setSearchInput("");

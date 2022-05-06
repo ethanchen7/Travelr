@@ -17,7 +17,7 @@ const EditImageForm = ({ image, setShowModal }) => {
 
     let tagsArray;
     if (tags.length) {
-      tagsArray = tags.split(",");
+      tagsArray = tags.toLowerCase().split(",");
       tagsArray = tagsArray.map((tag) => tag.replace(/\s+/g, ""));
     }
     const payload = {

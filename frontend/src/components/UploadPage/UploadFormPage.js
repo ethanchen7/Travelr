@@ -17,7 +17,7 @@ const UploadPage = ({ setShowModal }) => {
 
     let tagsArray;
     if (tags.length) {
-      tagsArray = tags.split(",");
+      tagsArray = tags.toLowerCase().split(",");
       tagsArray = tagsArray.map((tag) => tag.replace(/\s+/g, ""));
     }
 
