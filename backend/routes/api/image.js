@@ -77,7 +77,7 @@ router.put(
       }
     );
     const updatedImage = await Image.findByPk(req.params.id, {
-      include: [{ model: User }],
+      include: [{ model: User, include: [{ model: Profile }] }],
     });
     res.json(updatedImage);
   })
