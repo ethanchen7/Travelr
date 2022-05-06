@@ -1,10 +1,11 @@
 .bio-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 170px;
-  width: 330px;
-  margin-top: 10px;
+  width: 320px;
+  margin-top: 6px;
   margin-bottom: 10px;
 }
 .bio-edit {
@@ -13,4 +14,12 @@
   line-height: 16px;
   padding: 10px;
   resize: none;
+}
+
+.bio-container > label {
+  align-self: flex-start;
+  /* margin-left: 5px; */
+  font-size: 14px;
+  margin-bottom: 3px;
+  color: gray;
 }

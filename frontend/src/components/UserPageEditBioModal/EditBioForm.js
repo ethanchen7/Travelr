@@ -64,6 +64,7 @@ const EditBioForm = ({ setShowModal, details }) => {
             ))}
         </ul>
         <div className="input-container">
+          <label htmlFor="file">Profile Pic</label>
           <input
             className="form-input file-input"
             type="file"
@@ -71,6 +72,7 @@ const EditBioForm = ({ setShowModal, details }) => {
           />
         </div>
         <div className="input-container">
+          <label htmlFor="fullName">Full Name</label>
           <input
             className="form-input"
             type="text"
@@ -79,6 +81,7 @@ const EditBioForm = ({ setShowModal, details }) => {
           />
         </div>
         <div className="input-container">
+          <label htmlFor="occupation">Occupation</label>
           <input
             className="form-input"
             type="text"
@@ -87,6 +90,7 @@ const EditBioForm = ({ setShowModal, details }) => {
           />
         </div>
         <div className="input-container">
+          <label htmlFor="location">Location</label>
           <input
             className="form-input"
             type="text"
@@ -95,6 +99,7 @@ const EditBioForm = ({ setShowModal, details }) => {
           />
         </div>
         <div className="input-container">
+          <label htmlFor="destination">Favorite Destination</label>
           <input
             className="form-input"
             type="text"
@@ -103,6 +108,7 @@ const EditBioForm = ({ setShowModal, details }) => {
           />
         </div>
         <div className="bio-container">
+          <label htmlFor="bio">Bio</label>
           <textarea
             className="bio-edit"
             value={bio}

@@ -33,11 +33,20 @@
 
 .input-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 3.5rem;
   width: 25rem;
-  margin-bottom: 10px;
+  margin-bottom: 11px;
+}
+
+.input-container > label {
+  align-self: flex-start;
+  margin-left: 39px;
+  font-size: 14px;
+  margin-bottom: 3px;
+  color: gray;
 }
 
 .input-container > textarea {
