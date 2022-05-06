@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, NavLink } from "react-router-dom";
+import { useHistory, useParams, NavLink } from "react-router-dom";
 import { getSingleImage } from "../../store/image";
 import { getComments } from "../../store/comment";
+import { getSearchResults } from "../../store/search";
 // import { loadImages, loadDetails } from "../../store/profile";
 import { Modal } from "../../context/Modal";
 import CommentFormModal from "../CommentForm";
@@ -15,6 +16,7 @@ import SingleImageZoom from "../SingleImageZoom";
 
 const SingleImagePage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const { id } = useParams();
@@ -24,6 +26,10 @@ const SingleImagePage = () => {
   const commentObjects = useSelector((state) => state.comment.imageComments);
   const comments = Object.values(commentObjects);
   // const profile = useSelector((state) => state.profile.profileImages);
+  const handleTagBtnClick = (tag) => {
+    dispatch(getSearchResults(tag));
+    history.push(`/search/${tag}`);
+  };
 
   useEffect(() => {
     dispatch(getSingleImage(imageId))
@@ -74,7 +80,11 @@ const SingleImagePage = () => {
               </div>
               <div className="picture-tags">
                 {image.tags.map((tag) => (
-                  <button key={`${tag}`}>{`${tag.toUpperCase()}`}</button>
+                  <button
+                    value={tag}
+                    onClick={(e) => handleTagBtnClick(e.target.value)}
+                    key={`${tag}`}
+                  >{`${tag.toUpperCase()}`}</button>
                 ))}
               </div>
             </div>
