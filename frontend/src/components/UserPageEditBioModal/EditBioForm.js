@@ -9,14 +9,14 @@ const EditBioForm = ({ setShowModal, details }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const session = useSelector((state) => state.session.user);
-  const [fullName, setFullName] = useState(details.fullName);
+  const [fullName, setFullName] = useState(details.fullName || "");
   const [image, setImage] = useState(null);
-  const [occupation, setOccupation] = useState(details.occupation);
-  const [location, setLocation] = useState(details.location);
+  const [occupation, setOccupation] = useState(details.occupation || "");
+  const [location, setLocation] = useState(details.location || "");
   const [favoriteDestination, setFavoriteDestination] = useState(
-    details.favoriteDestination
+    details.favoriteDestination || ""
   );
-  const [bio, setBio] = useState(details.bio);
+  const [bio, setBio] = useState(details.bio || "");
   const [validationErrors, setValidationErrors] = useState([]);
 
   const handleSubmit = async (e) => {
@@ -48,19 +48,19 @@ const EditBioForm = ({ setShowModal, details }) => {
 
   useEffect(() => {
     const errors = [];
-    if (fullName.length > 150)
+    if (fullName && fullName.length > 150)
       errors.push(
         "Please abbreviate your name to 150 characters or less, sorry!"
       );
-    if (location.length > 140)
+    if (location && location.length > 140)
       errors.push("Location can't be greater than 200 characters.");
-    if (favoriteDestination.length > 200)
+    if (favoriteDestination && favoriteDestination.length > 200)
       errors.push("Favorite Destination can't be greater than 200 characters.");
-    if (occupation.length > 100)
+    if (occupation && occupation.length > 100)
       errors.push(
         "Occupation is a bit lengthy, could you please abbreviate it to 100 characters or less?"
       );
-    if (bio.length > 500)
+    if (bio && bio.length > 500)
       errors.push(
         "We'd love to hear more about you, but we have to keep the bio at 500 characters or less for now. Sorry!"
       );

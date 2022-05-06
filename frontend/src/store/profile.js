@@ -78,14 +78,13 @@ export const putProfileDetails = (payload) => async (dispatch) => {
   } = payload;
 
   const formData = new FormData();
-  if (fullName) formData.append("fullName", fullName);
-  if (profilePic) formData.append("profilePic", profilePic);
-  if (location) formData.append("location", location);
-  if (favoriteDestination)
-    formData.append("favoriteDestination", favoriteDestination);
-  if (occupation) formData.append("occupation", occupation);
-  if (bio) formData.append("bio", bio);
-  if (image) formData.append("image", image);
+  formData.append("fullName", fullName);
+  formData.append("profilePic", profilePic);
+  formData.append("location", location);
+  formData.append("favoriteDestination", favoriteDestination);
+  formData.append("occupation", occupation);
+  formData.append("bio", bio);
+  formData.append("image", image);
 
   const res = await csrfFetch(`/api/profile/${userId}`, {
     method: "PUT",
