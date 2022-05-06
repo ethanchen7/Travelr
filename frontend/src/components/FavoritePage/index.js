@@ -24,6 +24,7 @@ const FavoritePage = () => {
     if (favorites.length) {
       return (
         <div className="body-container">
+          <p>Your Favorites</p>
           <div className="inner-container">
             {favorites.map((fav) => {
               return (
