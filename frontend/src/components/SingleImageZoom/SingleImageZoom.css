@@ -1,6 +1,11 @@
 .image-zoom-container {
-  width: fit-content;
-  height: fit-content;
+  max-height: 93vh;
+  max-width: 88vw;
+}
+
+.image-zoom-container > img {
+  height: 100%;
+  width: 100%;
 }
 
 .image-footer-container {
