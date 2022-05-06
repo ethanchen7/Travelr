@@ -1,9 +1,12 @@
 .body-container {
   position: absolute;
   top: 75px;
-  margin: 100px;
+  margin: 10px 100px 20px 100px;
   padding: 0;
-  text-align: center;
+}
+
+.body-container > p {
+  font-size: 24px;
 }
 
 .inner-container {

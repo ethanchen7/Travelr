@@ -24,6 +24,7 @@ const ExplorePage = () => {
   }, [dispatch]);
   return (
     <div className="body-container">
+      <p>Explore</p>
       <div className="inner-container">
         {images?.map((image) => {
           return <ImageCard key={image.id} image={image} explorePage={true} />;

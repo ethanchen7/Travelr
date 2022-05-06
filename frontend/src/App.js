@@ -7,6 +7,7 @@ import HomePage from "./components/HomePage";
 import UserPage from "./components/UserPage";
 import SingleImagePage from "./components/SingleImagePage";
 import FavoritePage from "./components/FavoritePage";
+import Search from "./components/Search/Search";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/favorites">
             <FavoritePage />
+          </Route>
+          <Route>
+            <Search path="/search/:searchInput" />
           </Route>
         </Switch>
       )}

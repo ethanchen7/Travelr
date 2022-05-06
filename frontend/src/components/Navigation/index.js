@@ -6,7 +6,7 @@ import SignUpFormModal from "../SignUpFormModal";
 import UploadFormModal from "../UploadPage";
 import "./Navigation.css";
 import LogoutButton from "./LogoutButton";
-import SearchForm from "../SearchBar";
+import SearchForm from "../Search/SearchForm";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);

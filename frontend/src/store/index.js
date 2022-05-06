@@ -5,12 +5,14 @@ import sessionReducer from "./session";
 import imageReducer from "./image";
 import profileReducer from "./profile";
 import commentReducer from "./comment";
+import searchReducer from "./search";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   images: imageReducer,
   profile: profileReducer,
   comment: commentReducer,
+  search: searchReducer,
 });
 
 let enhancer;
