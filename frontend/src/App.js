@@ -34,8 +34,8 @@ function App() {
           <Route path="/favorites">
             <FavoritePage />
           </Route>
-          <Route>
-            <Search path="/search/:searchInput" />
+          <Route path="/search/:searchInput">
+            <Search />
           </Route>
         </Switch>
       )}
