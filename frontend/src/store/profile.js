@@ -6,7 +6,7 @@ const LOAD_PROFILE_FAVORITED = "profile/LOAD_PROFILE_FAVORITED";
 const EDIT_PROFILE_DETAILS = "profile/EDIT_PROFILE_DETAILS";
 
 const CREATE = "image/CREATE";
-const EDIT_IMAGE = "image/EDIT_IMAGE";
+
 const DELETE_IMAGE = "image/DELETE_IMAGE";
 
 const loadProfileImages = (images) => {
@@ -40,13 +40,6 @@ const editProfileDetails = (details) => {
 const createImage = (image) => {
   return {
     type: CREATE,
-    image,
-  };
-};
-
-const editImage = (image) => {
-  return {
-    type: EDIT_IMAGE,
     image,
   };
 };
@@ -135,16 +128,6 @@ export const uploadImage = (submission) => async (dispatch) => {
   }
 };
 
-export const putImage = (payload) => async (dispatch) => {
-  const { imageUrl, imageId, userId, tags } = payload;
-  const res = await csrfFetch(`/api/images/${imageId}`, {
-    method: "PUT",
-    body: JSON.stringify({ userId, imageUrl, tags }),
-  });
-  const updatedImage = await res.json();
-  dispatch(editImage(updatedImage));
-};
-
 export const removeImage = (imageId) => async (dispatch) => {
   const res = await csrfFetch(`/api/images/${imageId}`, {
     method: "DELETE",
@@ -195,14 +178,7 @@ const profileReducer = (state = initialState, action) => {
         },
       };
       return newState;
-    case EDIT_IMAGE:
-      return {
-        ...state,
-        profileImages: {
-          ...state.profileImages,
-          [action.image.id]: action.image,
-        },
-      };
+
     case DELETE_IMAGE:
       const updatedState = {
         ...state,

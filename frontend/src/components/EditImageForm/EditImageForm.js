@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { putImage } from "../../store/profile";
+import { putImage } from "../../store/image";
 import "../LoginFormModal/LoginForm.css";
 
 const EditImageForm = ({ image, setShowModal }) => {

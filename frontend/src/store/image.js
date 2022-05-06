@@ -2,6 +2,8 @@ import { csrfFetch } from "./csrf";
 const LOAD = "image/LOAD";
 const LOAD_SINGLE = "image/LOAD_SINGLE";
 
+const EDIT_IMAGE = "image/EDIT_IMAGE";
+
 const FAVORITE = "image/FAVORITE";
 const DELETE_FAVORITE = "image/DELETE_FAVORITE";
 
@@ -26,6 +28,13 @@ const favoriteImage = (favorite) => {
   };
 };
 
+const editImage = (image) => {
+  return {
+    type: EDIT_IMAGE,
+    image,
+  };
+};
+
 const deleteFavorite = (favorite, userId) => {
   return {
     type: DELETE_FAVORITE,
@@ -46,6 +55,16 @@ export const getSingleImage = (imageId) => async (dispatch) => {
   const res = await csrfFetch(`/api/images/${imageId}`);
   const image = await res.json();
   dispatch(loadSingleImage(image));
+};
+
+export const putImage = (payload) => async (dispatch) => {
+  const { imageUrl, imageId, userId, tags } = payload;
+  const res = await csrfFetch(`/api/images/${imageId}`, {
+    method: "PUT",
+    body: JSON.stringify({ userId, imageUrl, tags }),
+  });
+  const updatedImage = await res.json();
+  dispatch(editImage(updatedImage));
 };
 
 export const createFavorite = (payload) => async (dispatch) => {
@@ -72,13 +91,23 @@ export const createFavorite = (payload) => async (dispatch) => {
 };
 
 export const removeFavorite = (payload) => async (dispatch) => {
-  const { userId, imageId } = payload;
+  const { imageId, userId, imageUrl, favoriteCount, tags, imageUserId } =
+    payload;
   const res = await csrfFetch(`/api/images/${imageId}/favorite`, {
     method: "DELETE",
     body: JSON.stringify({ userId }),
   });
   const data = await res.json();
-  console.log(data);
+  const updateRes = await csrfFetch(`/api/images/${imageId}/favorite`, {
+    method: "PUT",
+    body: JSON.stringify({
+      imageId,
+      userId: imageUserId,
+      imageUrl,
+      favoriteCount,
+      tags,
+    }),
+  });
   dispatch(deleteFavorite(data.favorite, data.userId));
 };
 
@@ -99,8 +128,16 @@ const imageReducer = (state = initialState, action) => {
       return {
         ...state,
         imageObjects: {
-          [action.image.id]: action.image,
           ...state.imageObjects,
+          [action.image.id]: action.image,
+        },
+      };
+    case EDIT_IMAGE:
+      return {
+        ...state,
+        imageObjects: {
+          ...state.imageObjects,
+          [action.image.id]: action.image,
         },
       };
 

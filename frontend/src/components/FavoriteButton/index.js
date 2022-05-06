@@ -9,7 +9,9 @@ const FavoriteButton = ({ image, small }) => {
   const isFavorited = image.Favorites?.filter(
     (favorite) => favorite.userId === sessionUser.id
   );
-  const [favorited, setFavorited] = useState(isFavorited.length > 0);
+  const [favorited, setFavorited] = useState(
+    isFavorited && isFavorited.length > 0
+  );
   const imageId = image.id;
   const userId = sessionUser.id;
 
@@ -29,8 +31,19 @@ const FavoriteButton = ({ image, small }) => {
     );
   };
   const handleUnFavoriteClick = () => {
+    let currentFavCount = image.favoriteCount;
+    currentFavCount -= 1;
     setFavorited(false);
-    dispatch(removeFavorite({ imageId, userId }));
+    dispatch(
+      removeFavorite({
+        imageId,
+        imageUserId: image.User.id,
+        userId,
+        imageUrl: image.imageUrl,
+        favoriteCount: currentFavCount,
+        tags: image.tags,
+      })
+    );
   };
 
   if (!small) {
