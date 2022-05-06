@@ -1,0 +1,60 @@
+.page-not-found-container {
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  color: black;
+
+  line-height: 40px;
+  text-align: center;
+  font-size: 30px;
+}
+.title-content {
+  display: block;
+  opacity: 0;
+  animation: revealText 0.5s forwards;
+}
+
+.title-second {
+  animation-delay: 0.2s;
+}
+
+.title-third {
+  animation-delay: 0.5s;
+}
+
+.title-fourth {
+  margin-top: 20px;
+  font-size: 24px;
+  animation-delay: 2.5s;
+}
+.title-fifth {
+  font-size: 24px;
+  animation-delay: 3.5s;
+}
+
+.title-sixth {
+  animation-delay: 4s;
+}
+
+.photo {
+  margin-top: 20px;
+  width: 800px;
+  height: 530px;
+  border-radius: 50px;
+}
+
+@keyframes revealText {
+  from {
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
