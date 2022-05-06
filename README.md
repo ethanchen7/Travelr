@@ -2,7 +2,7 @@
 
 <img width="1787" alt="Screen Shot 2022-05-05 at 8 04 30 PM" src="https://user-images.githubusercontent.com/60331384/167060136-f6db1830-6c4f-4492-bc64-40946085f0dd.png">
 
-[Travelr](https://travelr-ec.herokuapp.com/) is a platform where users can share diverse thoughts, read and write stories of any topic, follow certain topics of interest, as well as follow other users. It is inspired by the the social publishing platform Medium.
+Inspired by Flickr, [Travelr](https://travelr-ec.herokuapp.com/) is a platform where users build a profile and collection of images related to travel, save images they like by favoriting them, share their thoughts on images through comments, and tag their images to locations.
 
 | [Live Site](https://travelr-ec.herokuapp.com/) | [MVP Feature List](https://github.com/ethanchen7/Travelr/wiki/Travelr-Features-List) | [Database Schema](https://github.com/ethanchen7/Travelr/wiki/Database-Schema) 
 
