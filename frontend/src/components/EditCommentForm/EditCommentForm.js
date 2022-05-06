@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { putComment } from "../../store/comment";
@@ -13,17 +13,31 @@ const EditCommentForm = ({ comment, setShowModal }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let errors = [];
-    const payload = {
-      userId: session.id,
-      imageId: comment.imageId,
-      commentId: comment.id,
-      text,
-    };
 
-    dispatch(putComment(payload));
-    setShowModal(false);
+    if (!validationErrors.length) {
+      const payload = {
+        userId: session.id,
+        imageId: comment.imageId,
+        commentId: comment.id,
+        text,
+      };
+
+      dispatch(putComment(payload));
+      setShowModal(false);
+    }
   };
+
+  useEffect(() => {
+    const errors = [];
+
+    if (!text) errors.push("Gotta write something in your comment!");
+    if (text.length > 300)
+      errors.push(
+        "We know you have a lot on your mind, but let's keep the comment 300 characters or less please!"
+      );
+
+    setValidationErrors(errors);
+  }, [text]);
 
   return (
     <div className="container">
