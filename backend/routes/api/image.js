@@ -29,7 +29,11 @@ router.get(
   restoreUser,
   asyncHandler(async (req, res) => {
     const image = await Image.findByPk(req.params.id, {
-      include: [{ model: User }, { model: Favorite }, { model: Comment }],
+      include: [
+        { model: User, include: [{ model: Profile }] },
+        { model: Favorite },
+        { model: Comment },
+      ],
     });
     return res.json(image);
   })
