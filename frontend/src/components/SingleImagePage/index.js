@@ -69,7 +69,10 @@ const SingleImagePage = () => {
             <div className="profile-container">
               <div className="profile-inner-container">
                 <div className="profile-picture">
-                  <img src={`${image.imageUrl}`} alt="profilepic"></img>
+                  <img
+                    src={`${image.User.Profile.profilePic}`}
+                    alt="profilepic"
+                  ></img>
                 </div>
                 <div className="profile-details">
                   <NavLink
