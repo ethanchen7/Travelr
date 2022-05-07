@@ -41,7 +41,7 @@ Travelr is built on React/Redux, HTML, and CSS for its frontend, Express and Seq
 
 7. Change directory into the frontend and backend folders in two shells. Run both servers with: <br />
 
-`npm start`
+&ensp;&ensp;`npm start`
 
 
 
