@@ -58,7 +58,7 @@ router.put(
     } = req.body;
 
     let editedPic;
-    if (!profilePic && req.file) {
+    if (req.file) {
       editedPic = await singlePublicFileUpload(req.file);
     } else {
       editedPic = profilePic;
