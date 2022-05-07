@@ -8,8 +8,6 @@ import {
 } from "../../store/profile";
 import UserPageHeader from "../UserPageHeader";
 import UserPageNavBar from "../UserPageNavBar";
-import ImageCard from "../ImageCard";
-import UploadFormModal from "../UploadPage";
 import "./UserPage.css";
 import UserPagePhotoStream from "../UserPagePhotoStream";
 import UserPageFavorites from "../UserPageFavorites";

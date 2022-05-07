@@ -12,7 +12,7 @@ const UserPagePhotoStream = ({ imageObjects, sessionUser, userPageId }) => {
         </div>
       ) : (
         <div className="empty-photo-container">
-          <img src="/images/travelrblack.png" />
+          <img src="/images/travelrblack.png" alt="logo" />
           {sessionUser.id === parseInt(userPageId) ? (
             <>
               <h1>Oops, looks like you don't have any photos yet.</h1>

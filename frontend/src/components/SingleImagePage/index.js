@@ -81,7 +81,7 @@ const SingleImagePage = () => {
                 </div>
               </div>
               <div className="picture-tags">
-                {image.tags.length && image.tags[0] != ""
+                {image.tags.length && image.tags[0] !== ""
                   ? image.tags.map((tag) => (
                       <button
                         value={tag}

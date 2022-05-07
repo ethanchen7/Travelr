@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./UserPageNavBar.css";
 
 const UserPageNavBar = ({ setPhotoStreamToggle }) => {

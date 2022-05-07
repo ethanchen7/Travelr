@@ -17,7 +17,7 @@ const UserPageFavorites = ({ favorites, sessionUser, userPageId }) => {
         <div className="empty-photo-container">
           {sessionUser.id === parseInt(userPageId) ? (
             <>
-              <img src="/images/travelrblack.png" />
+              <img src="/images/travelrblack.png" alt="logo" />
               <h1>Oops, looks like you don't have any favorites yet.</h1>
               <h3>Explore and add some favorites!</h3>
             </>

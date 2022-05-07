@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { putComment } from "../../store/comment";
 import "../LoginFormModal/LoginForm.css";
 
 const EditCommentForm = ({ comment, setShowModal }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const session = useSelector((state) => state.session.user);
   const [text, setText] = useState(comment.text);
   const [validationErrors, setValidationErrors] = useState([]);

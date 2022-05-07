@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { putProfileDetails } from "../../store/profile";
 import "./EditBioForm.css";
@@ -7,7 +6,6 @@ import "../LoginFormModal/LoginForm.css";
 
 const EditBioForm = ({ setShowModal, details }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const session = useSelector((state) => state.session.user);
   const [fullName, setFullName] = useState(details.fullName || "");
   const [image, setImage] = useState(null);
@@ -21,7 +19,6 @@ const EditBioForm = ({ setShowModal, details }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let errors = [];
 
     let profilePic;
     if (!image) profilePic = details.profilePic;

@@ -4,7 +4,6 @@ import * as sessionActions from "../../store/session";
 import { Redirect } from "react-router-dom";
 import DemoUserButton from "../DemoUserButton";
 import "./LoginForm.css";
-import { NavLink } from "react-router-dom";
 
 const LoginForm = () => {
   const dispatch = useDispatch();

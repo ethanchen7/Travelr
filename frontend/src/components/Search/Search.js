@@ -6,7 +6,6 @@ import ImageCard from "../ImageCard";
 
 const Search = () => {
   const dispatch = useDispatch();
-  const params = useParams();
   const { searchInput } = useParams();
   const searchResults = useSelector((state) => state.search.searchResults);
 

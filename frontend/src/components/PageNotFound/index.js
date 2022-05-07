@@ -28,6 +28,7 @@ const PageNotFound = () => {
         <img
           className="title-content title-sixth photo"
           src="/images/ethanseoul.JPG"
+          alt="travel-pic"
         />
       </h1>
     </div>

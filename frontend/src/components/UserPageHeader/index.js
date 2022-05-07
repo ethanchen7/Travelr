@@ -6,14 +6,18 @@ const UserPageHeader = ({ details }) => {
     <div className="user-page-header-container">
       <div className="user-page-cover-photo">
         <EditBioModal details={details} />
-        <img src="/images/background-1.jpeg" />
+        <img src="/images/background-1.jpeg" alt="backgroundimg" />
         <div className="user-information">
           <div className="user-profile">
             <div className="user-profile-icon-container">
               {details.profilePic ? (
-                <img src={`${details.profilePic}`} />
+                <img src={`${details.profilePic}`} alt="profilepic" />
               ) : (
-                <img className="default-pic" src="/images/defaultprofile.png" />
+                <img
+                  className="default-pic"
+                  src="/images/defaultprofile.png"
+                  alt="defaultpic"
+                />
               )}
             </div>
             <div className="user-profile-text-container">
