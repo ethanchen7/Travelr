@@ -45,7 +45,7 @@ Travelr is built on React/Redux, HTML, and CSS for its frontend, Express and Seq
 
 ## Explore Page
 
-Images are rendered by pulling a random selection of images from the image state. Image selections are refreshed upon component rerender / state changes. Users can hover over the image cards to favorite the image and view the user who published it and any tags they left related to that image. The image gallery look is completed using a CSS grid, where the number of rows and columns an image takes up is dynamically calculated by using its height and width as a proportion to the total number of rows and columns in the gallery grid.
+Images are rendered by pulling a random selection of images from the image state. Image selections are refreshed upon component rerender / state changes. Users can hover over the image cards to favorite the image and view the user who published it and any tags they left related to that image. The image gallery is designed with a CSS grid, where the number of rows and columns an image takes up is dynamically calculated by using its height and width as a proportion to the total number of rows and columns in the gallery grid.
 
 ![Screen Shot 2022-05-07 at 12 10 53 PM](https://user-images.githubusercontent.com/60331384/167268565-c8191e91-d275-4892-b028-e9d06788b44f.png)
 
@@ -55,3 +55,14 @@ The profile page displays the user's published images, profile details, and the 
 
 ![Screen Shot 2022-05-07 at 12 33 12 PM](https://user-images.githubusercontent.com/60331384/167269186-58689b5e-a346-44aa-961c-1ce24098315e.png)
 
+## Favorites Page
+
+Users are able to navigate to a page dedicated to showcasing their favorited images. Images are rendered from the user's profile state, which houses all the images that the user has favorited.
+
+![Screen Shot 2022-05-07 at 12 37 45 PM](https://user-images.githubusercontent.com/60331384/167269302-993a8f8a-4939-425c-81c0-21b385caea4e.png)
+
+## Image Page
+
+Clicking an image routes the user to a page that renders the image's comments, total favorite count, image owner, and tags. Users are able to interact with the image on this page through favoriting/unfavoriting, adding, editing, and deleting comments, or editing the image's tags if they are the owner of that image.  
+
+![Screen Shot 2022-05-07 at 12 45 20 PM](https://user-images.githubusercontent.com/60331384/167269501-b87e0707-79a0-440d-82bb-027e6ebeb33f.png)
