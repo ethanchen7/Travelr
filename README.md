@@ -70,3 +70,4 @@ The upload button in the navigation bar allows users to upload an image of their
 ![Screen Shot 2022-05-07 at 12 45 20 PM](https://user-images.githubusercontent.com/60331384/167269501-b87e0707-79a0-440d-82bb-027e6ebeb33f.png)![Screen Shot 2022-05-07 at 12 49 54 PM](https://user-images.githubusercontent.com/60331384/167269649-22575469-a91b-44c4-9776-b819e1e171ce.png)
 
 ![Screen Shot 2022-05-07 at 12 48 05 PM](https://user-images.githubusercontent.com/60331384/167269589-6ddb8444-9369-4a19-85cb-b7f01a7b29c8.png)
+![Screen Shot 2022-05-07 at 12 52 09 PM](https://user-images.githubusercontent.com/60331384/167269717-c1955591-0e8d-4287-bb33-b02227d67570.png)
