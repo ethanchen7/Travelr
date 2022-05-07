@@ -15,16 +15,17 @@ const EditImageForm = ({ image, setShowModal }) => {
     e.preventDefault();
     let errors = [];
 
-    let tagsArray;
+    let tagsArray = tags;
     if (tags.length) {
       tagsArray = tags.toLowerCase().split(",");
       tagsArray = tagsArray.map((tag) => tag.replace(/\s+/g, ""));
+      tagsArray = tagsArray.join(",");
     }
     const payload = {
       userId: session.id,
       imageId: image.id,
       imageUrl: image.imageUrl,
-      tags: tagsArray.join(","),
+      tags: tagsArray,
     };
 
     dispatch(putImage(payload));

@@ -4,7 +4,6 @@ import { useHistory, useParams, NavLink } from "react-router-dom";
 import { getSingleImage } from "../../store/image";
 import { getComments } from "../../store/comment";
 import { getSearchResults } from "../../store/search";
-// import { loadImages, loadDetails } from "../../store/profile";
 import { Modal } from "../../context/Modal";
 import CommentFormModal from "../CommentForm";
 import DeleteCommentModal from "../DeleteCommentModal";
@@ -25,7 +24,7 @@ const SingleImagePage = () => {
   const image = useSelector((state) => state.images?.imageObjects)[imageId];
   const commentObjects = useSelector((state) => state.comment.imageComments);
   const comments = Object.values(commentObjects);
-  // const profile = useSelector((state) => state.profile.profileImages);
+
   const handleTagBtnClick = (tag) => {
     dispatch(getSearchResults(tag));
     history.push(`/search/${tag}`);
@@ -82,13 +81,15 @@ const SingleImagePage = () => {
                 </div>
               </div>
               <div className="picture-tags">
-                {image.tags.map((tag) => (
-                  <button
-                    value={tag}
-                    onClick={(e) => handleTagBtnClick(e.target.value)}
-                    key={`${tag}`}
-                  >{`${tag.toUpperCase()}`}</button>
-                ))}
+                {image.tags.length && image.tags[0] != ""
+                  ? image.tags.map((tag) => (
+                      <button
+                        value={tag}
+                        onClick={(e) => handleTagBtnClick(e.target.value)}
+                        key={`${tag}`}
+                      >{`${tag.toUpperCase()}`}</button>
+                    ))
+                  : ""}
               </div>
             </div>
 
