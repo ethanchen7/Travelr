@@ -85,3 +85,8 @@ Clicking on a tag button from an image redirects the user to a page of images wi
 
 ![Screen Shot 2022-05-07 at 12 54 48 PM](https://user-images.githubusercontent.com/60331384/167269821-0c1b9e00-e133-4a12-ba8b-5aae8f7a16a0.png)
 
+## 404 
+
+If the user navigates to a page that doesn't exist, they are brought to a page not found view, which features my Github and LinkedIn (and a picture of myself traveling in Seoul) :) 
+
+![Screen Shot 2022-05-07 at 12 57 13 PM](https://user-images.githubusercontent.com/60331384/167269875-47ffdd57-1bb9-42bf-b266-17f3f62ea44e.png)
