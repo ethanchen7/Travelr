@@ -71,3 +71,17 @@ The upload button in the navigation bar allows users to upload an image of their
 
 ![Screen Shot 2022-05-07 at 12 48 05 PM](https://user-images.githubusercontent.com/60331384/167269589-6ddb8444-9369-4a19-85cb-b7f01a7b29c8.png)
 ![Screen Shot 2022-05-07 at 12 52 09 PM](https://user-images.githubusercontent.com/60331384/167269717-c1955591-0e8d-4287-bb33-b02227d67570.png)
+![Screen Shot 2022-05-07 at 12 52 50 PM](https://user-images.githubusercontent.com/60331384/167269757-97e2cca4-70d2-41fa-af14-fb04c2d8f915.png)
+
+## Search
+
+Users are able to search for particular images, by submitting a search query with the tag of their interest in the search bar. Images with that tag are rendered in the gallery.
+
+![Screen Shot 2022-05-07 at 12 53 27 PM](https://user-images.githubusercontent.com/60331384/167269791-ad6c3708-833f-46e1-b061-e519a858eaca.png)
+
+## Tags
+
+Clicking on a tag button from an image redirects the user to a page of images with that tag. 
+
+![Screen Shot 2022-05-07 at 12 54 48 PM](https://user-images.githubusercontent.com/60331384/167269821-0c1b9e00-e133-4a12-ba8b-5aae8f7a16a0.png)
+
