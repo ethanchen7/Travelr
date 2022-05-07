@@ -27,11 +27,11 @@ Travelr is built on React/Redux, HTML, and CSS for its frontend, Express and Seq
 
 3. Create a .env file in the root direction based on the .env.example given.  <br />
 
-4. Create a user in psql based on your .env DATABASE_URL app_name   <br />
+4. Create a user in psql based on your .env DB_USERNAME. <br />
 
 &ensp;&ensp;`psql -c "CREATE USER <username> PASSWORD '<password>' CREATEDB"`
 
-5. Create a database in psql based on your .env DATABASE_URL db_name.  <br />
+5. Create a database in psql based on your .env DB_DATABASE. <br />
 
 6. Start your shell and migrate and seed the database.   <br />
 
@@ -39,7 +39,8 @@ Travelr is built on React/Redux, HTML, and CSS for its frontend, Express and Seq
 
 &ensp;&ensp;`npx dotenv sequelize db:seed:all`
 
-
+7. Change directory into the frontend and backend folders in two shells. Run both servers with: 
+`npm start`
 
 
 
