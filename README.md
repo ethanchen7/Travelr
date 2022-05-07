@@ -4,7 +4,7 @@
 
 Inspired by Flickr, [Travelr](https://travelr-ec.herokuapp.com/) is a platform where users build a profile and collection of images related to travel, save images they like by favoriting them, share their thoughts on images through comments, and tag their images to locations.
 
-| [Live Site](https://travelr-ec.herokuapp.com/) | [MVP Feature List](https://github.com/ethanchen7/Travelr/wiki/Travelr-Features-List) | [Database Schema](https://github.com/ethanchen7/Travelr/wiki/Database-Schema) 
+| [Live Site](https://travelr-ec.herokuapp.com/) | [MVP Feature List](https://github.com/ethanchen7/Travelr/wiki/Travelr-Features-List) | [Database Schema](https://github.com/ethanchen7/Travelr/wiki/Database-Schema) |
 
 # Technologies Used
 
