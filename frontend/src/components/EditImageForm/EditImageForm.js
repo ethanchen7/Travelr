@@ -1,15 +1,12 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { putImage } from "../../store/image";
 import "../LoginFormModal/LoginForm.css";
 
 const EditImageForm = ({ image, setShowModal }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const session = useSelector((state) => state.session.user);
   const [tags, setTags] = useState(image.tags);
-  const [validationErrors, setValidationErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +15,7 @@ const EditImageForm = ({ image, setShowModal }) => {
     let tagsArray = tags;
     if (tags.length) {
       tagsArray = tags.toLowerCase().split(",");
-      tagsArray = tagsArray.map((tag) => tag.replace(/\s+/g, ""));
+      // tagsArray = tagsArray.map((tag) => tag.replace(/\s+/g, ""));
       tagsArray = tagsArray.join(",");
     }
     const payload = {
@@ -38,19 +35,14 @@ const EditImageForm = ({ image, setShowModal }) => {
         <div className="form-logo">
           <img src="/images/travelrblack.png" alt="logo" />
         </div>
-        <div className="form-header-text">Edit your image's tags</div>
+        <div className="edit-form-header-text">
+          <p>Edit your image's tags</p>
+          <p>(separated by commas e.g. "paris,france")</p>
+        </div>
       </div>
       <form className="form-container" onSubmit={handleSubmit}>
-        <ul className="errors-container">
-          {validationErrors &&
-            validationErrors.map((err, i) => (
-              <li className="error" key={i}>
-                {err}
-              </li>
-            ))}
-        </ul>
-        <div className="input-container">
-          <textarea
+        <div className="edit-input-container">
+          <input
             className="form-input"
             value={tags}
             onChange={(e) => setTags(e.target.value)}

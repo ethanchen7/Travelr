@@ -20,22 +20,24 @@ const EditBioForm = ({ setShowModal, details }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let profilePic;
-    if (!image) profilePic = details.profilePic;
+    if (!validationErrors.length) {
+      let profilePic;
+      if (!image) profilePic = details.profilePic;
 
-    const payload = {
-      userId: session.id,
-      fullName,
-      image,
-      profilePic,
-      location,
-      favoriteDestination,
-      occupation,
-      bio,
-    };
+      const payload = {
+        userId: session.id,
+        fullName,
+        image,
+        profilePic,
+        location,
+        favoriteDestination,
+        occupation,
+        bio,
+      };
 
-    dispatch(putProfileDetails(payload));
-    setShowModal(false);
+      dispatch(putProfileDetails(payload));
+      setShowModal(false);
+    }
   };
 
   const uploadFile = (e) => {

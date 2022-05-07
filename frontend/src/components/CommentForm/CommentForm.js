@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { postComment } from "../../store/comment";
@@ -6,24 +6,36 @@ import "../LoginFormModal/LoginForm.css";
 
 const CommentForm = ({ setShowModal, imageId }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const session = useSelector((state) => state.session.user);
   const [text, setText] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let errors = [];
-    const data = {
-      userId: session.id,
-      imageId,
-      text,
-    };
 
-    dispatch(postComment(data));
-    // history.push("/");
-    setShowModal(false);
+    if (!validationErrors.length) {
+      const data = {
+        userId: session.id,
+        imageId,
+        text,
+      };
+
+      dispatch(postComment(data));
+      setShowModal(false);
+    }
   };
+
+  useEffect(() => {
+    const errors = [];
+
+    if (!text) errors.push("What are your thoughts? Don't be shy");
+    if (text.length > 300)
+      errors.push(
+        "I know you have a lot of thoughts on your mind, but please keep your comment 300 characters or less please!"
+      );
+
+    setValidationErrors(errors);
+  }, [text]);
 
   return (
     <div className="container">

@@ -1,0 +1,13 @@
+.edit-form-header-text {
+  text-align: center;
+}
+
+.edit-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 3.5rem;
+  width: 25rem;
+  margin-top: 0px;
+  margin-bottom: 11px;
+}

@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadImage } from "../../store/profile";
 import "../LoginFormModal/LoginForm.css";
 
 const UploadPage = ({ setShowModal }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const session = useSelector((state) => state.session.user);
   const [image, setImage] = useState(null);
   const [tags, setTags] = useState("");
@@ -16,7 +18,6 @@ const UploadPage = ({ setShowModal }) => {
     let tagsArray;
     if (tags.length) {
       tagsArray = tags.toLowerCase().split(",");
-      tagsArray = tagsArray.map((tag) => tag.replace(/\s+/g, ""));
     }
 
     if (!validationErrors.length) {
@@ -28,6 +29,7 @@ const UploadPage = ({ setShowModal }) => {
       setValidationErrors([]);
       dispatch(uploadImage(data));
       setShowModal(false);
+      history.push(`/users/${session.id}`);
     }
   };
 
