@@ -24,18 +24,18 @@ li {
 }
 
 .error {
-  color: red;
+  color: rgb(165, 86, 86);
   font-size: 14px;
 }
 
 button {
-  background-color: #75c365d2;
-  border: 1px solid #75c365c9;
+  background-color: #62b5c0d2;
+  border: 1px solid #62b5c0d2;
 }
 
 button .disabled {
-  background-color: #dafbd3d2;
-  border: 1px solid #dafbd3d2;
+  background-color: #a4ccd2d2;
+  border: 1px solid #a4ccd2d2;
   color: rgb(132, 132, 132);
 }
 
