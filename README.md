@@ -45,8 +45,13 @@ Travelr is built on React/Redux, HTML, and CSS for its frontend, Express and Seq
 
 ## Explore Page
 
-Images are rendered by pulling a random selection of images from the image state. Image selections are refreshed upon component rerender / state changes. Users can hover over the image cards to view the user who published it, and any tags they left related to that image. The image gallery look is completed using a CSS grid, where the number of rows and columns an image takes up is dynamically calculated by using its height and width as a proportion to the total number of rows and columns in the gallery grid.
+Images are rendered by pulling a random selection of images from the image state. Image selections are refreshed upon component rerender / state changes. Users can hover over the image cards to favorite the image and view the user who published it and any tags they left related to that image. The image gallery look is completed using a CSS grid, where the number of rows and columns an image takes up is dynamically calculated by using its height and width as a proportion to the total number of rows and columns in the gallery grid.
 
 ![Screen Shot 2022-05-07 at 12 10 53 PM](https://user-images.githubusercontent.com/60331384/167268565-c8191e91-d275-4892-b028-e9d06788b44f.png)
 
+## User Profile Page
+
+The profile page displays the user's published images, profile details, and the user's favorited images. The gallery component within the user page can be toggled to show the user's published images or "Photostream", or the user's favorited images. There is also an option to edit the profile details, including the profile picture, if the user is authenticated and is the owner of that profile. 
+
+![Screen Shot 2022-05-07 at 12 33 12 PM](https://user-images.githubusercontent.com/60331384/167269186-58689b5e-a346-44aa-961c-1ce24098315e.png)
 
