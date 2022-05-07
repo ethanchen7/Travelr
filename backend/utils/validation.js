@@ -54,9 +54,17 @@ const validateProfile = [
   check("bio").isLength({ max: 500 }),
 ];
 
+const validateComment = [
+  check("text")
+    .exists({ checkFalsy: true })
+    .isLength({ max: 300 })
+    .withMessage("Comment must be 300 characters or less."),
+];
+
 module.exports = {
   handleValidationErrors,
   validateLogin,
   validateSignup,
   validateProfile,
+  validateComment,
 };

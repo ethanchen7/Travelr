@@ -1,6 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 
+const { validateComment } = require("../../utils/validation");
 const { requireAuth, restoreUser } = require("../../utils/auth");
 const { Image, Favorite, User, Comment } = require("../../db/models");
 
@@ -24,6 +25,7 @@ router.get(
 
 router.post(
   "/:imageId(\\d+)",
+  validateComment,
   requireAuth,
   restoreUser,
   asyncHandler(async (req, res) => {
@@ -37,6 +39,7 @@ router.post(
 
 router.put(
   "/:commentId(\\d+)",
+  validateComment,
   requireAuth,
   restoreUser,
   asyncHandler(async (req, res) => {
