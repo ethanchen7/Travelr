@@ -11,13 +11,13 @@ const ExplorePage = () => {
   const imageArray = Object.values(imageObjects).filter(
     (image) => image.User.id !== sessionUser.id
   );
-  // display random amount of images
-  const getRandom = (min, max) => {
-    return Math.random() * (max - min) + min;
-  };
-  const randomLow = Math.floor(getRandom(1, 9));
-  const randomHigh = Math.floor(getRandom(10, 20));
-  const images = imageArray.slice(randomLow, randomHigh);
+
+  // display images in random order, each rerender
+  const images = imageArray.sort(func);
+
+  function func(a, b) {
+    return 0.5 - Math.random();
+  }
 
   useEffect(() => {
     dispatch(getImages());
