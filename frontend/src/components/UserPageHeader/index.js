@@ -1,11 +1,17 @@
+import { useSelector } from "react-redux";
 import EditBioModal from "../UserPageEditBioModal";
 import "./UserPageHeader.css";
 
-const UserPageHeader = ({ details }) => {
+const UserPageHeader = ({ details, userId }) => {
+  const sessionUser = useSelector((state) => state.session.user);
   return (
     <div className="user-page-header-container">
       <div className="user-page-cover-photo">
-        <EditBioModal details={details} />
+        {sessionUser.id === parseInt(userId) ? (
+          <EditBioModal details={details} />
+        ) : (
+          ""
+        )}
         <img src="/images/background-1.jpeg" alt="backgroundimg" />
         <div className="user-information">
           <div className="user-profile">

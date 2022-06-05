@@ -34,14 +34,14 @@ const UserPage = () => {
       .then(() => dispatch(loadDetails(id)))
       .then(() => dispatch(loadFavoriteImages(id)))
       .then(() => setIsLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   if (!isLoaded) {
     return null;
   } else {
     return (
       <div className="user-page-container">
-        <UserPageHeader details={details} />
+        <UserPageHeader details={details} userId={id} />
         <UserPageNavBar setPhotoStreamToggle={setPhotoStreamToggle} />
         <div className="user-page-body">
           {photoStreamToggle ? (
