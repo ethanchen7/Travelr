@@ -1,7 +1,9 @@
 import { csrfFetch } from "./csrf";
 
-const LOGIN = "session/LOGIN";
-const LOGOUT = "session/LOGOUT";
+const prefix = "session/";
+
+const LOGIN = prefix + "LOGIN";
+const LOGOUT = prefix + "LOGOUT";
 
 const loginUser = (user) => {
   return {

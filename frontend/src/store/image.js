@@ -1,11 +1,12 @@
 import { csrfFetch } from "./csrf";
-const LOAD = "image/LOAD";
-const LOAD_SINGLE = "image/LOAD_SINGLE";
 
-const EDIT_IMAGE = "image/EDIT_IMAGE";
+const prefix = "image/";
 
-const FAVORITE = "image/FAVORITE";
-const DELETE_FAVORITE = "image/DELETE_FAVORITE";
+const LOAD = prefix + "LOAD";
+const LOAD_SINGLE = prefix + "LOAD_SINGLE";
+const EDIT_IMAGE = prefix + "EDIT_IMAGE";
+const FAVORITE = prefix + "FAVORITE";
+const DELETE_FAVORITE = prefix + "DELETE_FAVORITE";
 
 const loadImages = (images) => {
   return {
@@ -45,7 +46,6 @@ const deleteFavorite = (favorite, userId) => {
 
 export const getImages = () => async (dispatch) => {
   const res = await csrfFetch("/api/images");
-
   const data = await res.json();
   dispatch(loadImages(data));
   return data;
@@ -111,7 +111,6 @@ export const removeFavorite = (payload) => async (dispatch) => {
   dispatch(deleteFavorite(data.favorite, data.userId));
 };
 
-// imageArray: []
 const initialState = { imageObjects: {} };
 
 const imageReducer = (state = initialState, action) => {

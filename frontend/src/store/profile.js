@@ -1,9 +1,11 @@
 import { csrfFetch } from "./csrf";
 
-const LOAD_PROFILE_IMAGES = "profile/LOAD_PROFILE_IMAGES";
-const LOAD_PROFILE_DETAILS = "profile/LOAD_PROFILE_DETAILS";
-const LOAD_PROFILE_FAVORITED = "profile/LOAD_PROFILE_FAVORITED";
-const EDIT_PROFILE_DETAILS = "profile/EDIT_PROFILE_DETAILS";
+const prefix = "profile/";
+
+const LOAD_PROFILE_IMAGES = prefix + "LOAD_PROFILE_IMAGES";
+const LOAD_PROFILE_DETAILS = prefix + "LOAD_PROFILE_DETAILS";
+const LOAD_PROFILE_FAVORITED = prefix + "LOAD_PROFILE_FAVORITED";
+const EDIT_PROFILE_DETAILS = prefix + "EDIT_PROFILE_DETAILS";
 
 const CREATE = "image/CREATE";
 

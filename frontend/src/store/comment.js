@@ -1,9 +1,11 @@
 import { csrfFetch } from "./csrf";
 
-const LOAD_COMMENTS = "comment/LOAD_COMMENTS";
-const CREATE_COMMENT = "comment/CREATE_COMMENT";
-const EDIT_COMMENT = "comment/EDIT_COMMENT";
-const DELETE_COMMENT = "comment/DELETE_COMMENT";
+const prefix = "comment/";
+
+const LOAD_COMMENTS = prefix + "LOAD_COMMENTS";
+const CREATE_COMMENT = prefix + "CREATE_COMMENT";
+const EDIT_COMMENT = prefix + "EDIT_COMMENT";
+const DELETE_COMMENT = prefix + "DELETE_COMMENT";
 
 export const loadComments = (comments) => {
   return {
